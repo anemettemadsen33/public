@@ -1,0 +1,153 @@
+{
+  "nav": {
+    "home": "Home",
+    "cars": "Cars",
+    "trucks": "Trucks",
+    "vans": "Vans",
+    "campers": "Campers",
+    "motorcycles": "Motorcycles",
+    "electric": "Electric",
+    "construction": "Construction",
+    "agricultural": "Agricultural",
+    "dealers": "Dealers",
+    "compare": "Compare"
+  },
+  "common": {
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "price": "Price",
+    "year": "Year",
+    "mileage": "Mileage",
+    "fuelType": "Fuel Type",
+    "transmission": "Transmission",
+    "viewDetails": "View Details",
+    "compare": "Compare",
+    "contact": "Contact",
+    "buyNow": "Buy Now",
+    "leasing": "Leasing",
+    "testDrive": "Book Test Drive",
+    "from": "From",
+    "to": "To",
+    "apply": "Apply",
+    "reset": "Reset",
+    "close": "Close",
+    "submit": "Submit",
+    "cancel": "Cancel"
+  },
+  "home": {
+    "title": "Find Your Perfect Vehicle",
+    "subtitle": "Browse our extensive collection of cars, trucks, motorcycles and more",
+    "searchPlaceholder": "Search by make, model, or keyword...",
+    "featuredListings": "Featured Listings",
+    "categories": "Categories",
+    "whyChooseUs": "Why Choose Us",
+    "verifiedDealers": "Verified Dealers",
+    "wideSelection": "Wide Selection",
+    "bestPrices": "Best Prices",
+    "easyFinancing": "Easy Financing"
+  },
+  "listing": {
+    "results": "Results",
+    "sortBy": "Sort by",
+    "newest": "Newest",
+    "priceLowToHigh": "Price: Low to High",
+    "priceHighToLow": "Price: High to Low",
+    "mileageLowToHigh": "Mileage: Low to High",
+    "yearNewest": "Year: Newest First",
+    "noResults": "No vehicles found matching your criteria"
+  },
+  "details": {
+    "overview": "Overview",
+    "features": "Features",
+    "specifications": "Specifications",
+    "description": "Description",
+    "sellerInfo": "Seller Information",
+    "vinCheck": "VIN Check",
+    "vinCheckDescription": "Get a detailed vehicle history report",
+    "enterVin": "Enter VIN",
+    "checkHistory": "Check History"
+  },
+  "forms": {
+    "buyNow": {
+      "title": "Buy Now",
+      "personalInfo": "Personal Information",
+      "companyInfo": "Company Information",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "companyName": "Company Name",
+      "taxId": "Tax ID",
+      "address": "Address",
+      "city": "City",
+      "postalCode": "Postal Code",
+      "country": "Country",
+      "accountType": "Account Type",
+      "individual": "Individual",
+      "company": "Company",
+      "paymentMethod": "Payment Method",
+      "cashPayment": "Cash Payment",
+      "bankTransfer": "Bank Transfer",
+      "financing": "Financing",
+      "comments": "Additional Comments"
+    },
+    "leasing": {
+      "title": "Leasing Request",
+      "monthlyBudget": "Monthly Budget",
+      "downPayment": "Down Payment",
+      "leasingPeriod": "Leasing Period (months)",
+      "estimatedMileage": "Estimated Annual Mileage"
+    },
+    "testDrive": {
+      "title": "Book a Test Drive",
+      "selectDate": "Select Date",
+      "selectTime": "Select Time",
+      "preferredLocation": "Preferred Location",
+      "additionalNotes": "Additional Notes"
+    }
+  },
+  "compare": {
+    "title": "Compare Vehicles",
+    "selectVehicles": "Select up to 3 vehicles to compare",
+    "addVehicle": "Add Vehicle",
+    "removeVehicle": "Remove Vehicle",
+    "specifications": "Specifications",
+    "engine": "Engine",
+    "power": "Power",
+    "torque": "Torque",
+    "consumption": "Fuel Consumption",
+    "emissions": "CO2 Emissions",
+    "topSpeed": "Top Speed",
+    "acceleration": "0-100 km/h"
+  },
+  "dealers": {
+    "title": "Dealers",
+    "allDealers": "All Dealers",
+    "dealerProfile": "Dealer Profile",
+    "vehiclesInStock": "Vehicles in Stock",
+    "rating": "Rating",
+    "reviews": "Reviews",
+    "location": "Location",
+    "openingHours": "Opening Hours",
+    "contactDealer": "Contact Dealer"
+  },
+  "chat": {
+    "title": "AI Assistant",
+    "placeholder": "Ask me anything about vehicles...",
+    "examples": {
+      "1": "I'm looking for an SUV under €15,000",
+      "2": "What's the difference between diesel and electric?",
+      "3": "Show me 3 popular models from 2020"
+    }
+  },
+  "gamification": {
+    "points": "Points",
+    "badges": "Badges",
+    "activeUser": "Active User",
+    "reviewer": "Top Reviewer",
+    "reporter": "Quality Reporter",
+    "level": "Level",
+    "nextLevel": "Next Level"
+  }
+}

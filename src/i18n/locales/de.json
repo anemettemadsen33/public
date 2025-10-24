@@ -1,0 +1,153 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "cars": "Autos",
+    "trucks": "LKWs",
+    "vans": "Transporter",
+    "campers": "Wohnmobile",
+    "motorcycles": "Motorräder",
+    "electric": "Elektrisch",
+    "construction": "Baufahrzeuge",
+    "agricultural": "Landwirtschaft",
+    "dealers": "Händler",
+    "compare": "Vergleichen"
+  },
+  "common": {
+    "search": "Suchen",
+    "filter": "Filter",
+    "sort": "Sortieren",
+    "price": "Preis",
+    "year": "Jahr",
+    "mileage": "Kilometerstand",
+    "fuelType": "Kraftstoff",
+    "transmission": "Getriebe",
+    "viewDetails": "Details Anzeigen",
+    "compare": "Vergleichen",
+    "contact": "Kontakt",
+    "buyNow": "Jetzt Kaufen",
+    "leasing": "Leasing",
+    "testDrive": "Probefahrt Buchen",
+    "from": "Von",
+    "to": "Bis",
+    "apply": "Anwenden",
+    "reset": "Zurücksetzen",
+    "close": "Schließen",
+    "submit": "Absenden",
+    "cancel": "Abbrechen"
+  },
+  "home": {
+    "title": "Finden Sie Ihr Perfektes Fahrzeug",
+    "subtitle": "Durchsuchen Sie unsere umfangreiche Auswahl an Autos, LKWs, Motorrädern und mehr",
+    "searchPlaceholder": "Suche nach Marke, Modell oder Stichwort...",
+    "featuredListings": "Empfohlene Angebote",
+    "categories": "Kategorien",
+    "whyChooseUs": "Warum Uns Wählen",
+    "verifiedDealers": "Verifizierte Händler",
+    "wideSelection": "Große Auswahl",
+    "bestPrices": "Beste Preise",
+    "easyFinancing": "Einfache Finanzierung"
+  },
+  "listing": {
+    "results": "Ergebnisse",
+    "sortBy": "Sortieren nach",
+    "newest": "Neueste",
+    "priceLowToHigh": "Preis: Aufsteigend",
+    "priceHighToLow": "Preis: Absteigend",
+    "mileageLowToHigh": "Kilometerstand: Aufsteigend",
+    "yearNewest": "Jahr: Neueste Zuerst",
+    "noResults": "Keine Fahrzeuge gefunden, die Ihren Kriterien entsprechen"
+  },
+  "details": {
+    "overview": "Übersicht",
+    "features": "Ausstattung",
+    "specifications": "Spezifikationen",
+    "description": "Beschreibung",
+    "sellerInfo": "Verkäufer Informationen",
+    "vinCheck": "FIN-Prüfung",
+    "vinCheckDescription": "Erhalten Sie einen detaillierten Fahrzeughistorienbericht",
+    "enterVin": "FIN Eingeben",
+    "checkHistory": "Historie Prüfen"
+  },
+  "forms": {
+    "buyNow": {
+      "title": "Jetzt Kaufen",
+      "personalInfo": "Persönliche Informationen",
+      "companyInfo": "Firmendaten",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "companyName": "Firmenname",
+      "taxId": "Steuernummer",
+      "address": "Adresse",
+      "city": "Stadt",
+      "postalCode": "Postleitzahl",
+      "country": "Land",
+      "accountType": "Kontotyp",
+      "individual": "Privatperson",
+      "company": "Unternehmen",
+      "paymentMethod": "Zahlungsmethode",
+      "cashPayment": "Barzahlung",
+      "bankTransfer": "Banküberweisung",
+      "financing": "Finanzierung",
+      "comments": "Zusätzliche Kommentare"
+    },
+    "leasing": {
+      "title": "Leasing-Anfrage",
+      "monthlyBudget": "Monatliches Budget",
+      "downPayment": "Anzahlung",
+      "leasingPeriod": "Leasingdauer (Monate)",
+      "estimatedMileage": "Geschätzte Jahreskilometer"
+    },
+    "testDrive": {
+      "title": "Probefahrt Buchen",
+      "selectDate": "Datum Wählen",
+      "selectTime": "Uhrzeit Wählen",
+      "preferredLocation": "Bevorzugter Standort",
+      "additionalNotes": "Zusätzliche Notizen"
+    }
+  },
+  "compare": {
+    "title": "Fahrzeuge Vergleichen",
+    "selectVehicles": "Wählen Sie bis zu 3 Fahrzeuge zum Vergleichen",
+    "addVehicle": "Fahrzeug Hinzufügen",
+    "removeVehicle": "Fahrzeug Entfernen",
+    "specifications": "Spezifikationen",
+    "engine": "Motor",
+    "power": "Leistung",
+    "torque": "Drehmoment",
+    "consumption": "Kraftstoffverbrauch",
+    "emissions": "CO2-Emissionen",
+    "topSpeed": "Höchstgeschwindigkeit",
+    "acceleration": "0-100 km/h"
+  },
+  "dealers": {
+    "title": "Händler",
+    "allDealers": "Alle Händler",
+    "dealerProfile": "Händlerprofil",
+    "vehiclesInStock": "Fahrzeuge auf Lager",
+    "rating": "Bewertung",
+    "reviews": "Bewertungen",
+    "location": "Standort",
+    "openingHours": "Öffnungszeiten",
+    "contactDealer": "Händler Kontaktieren"
+  },
+  "chat": {
+    "title": "KI-Assistent",
+    "placeholder": "Fragen Sie mich alles über Fahrzeuge...",
+    "examples": {
+      "1": "Ich suche einen SUV unter 15.000€",
+      "2": "Was ist der Unterschied zwischen Diesel und Elektro?",
+      "3": "Zeigen Sie mir 3 beliebte Modelle aus 2020"
+    }
+  },
+  "gamification": {
+    "points": "Punkte",
+    "badges": "Abzeichen",
+    "activeUser": "Aktiver Nutzer",
+    "reviewer": "Top-Bewerter",
+    "reporter": "Qualitätsreporter",
+    "level": "Stufe",
+    "nextLevel": "Nächste Stufe"
+  }
+}
