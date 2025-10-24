@@ -12,12 +12,10 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: false,
     minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true, // Remove console.logs in production
-        drop_debugger: true
-      }
-    },
+    // Increase chunk size warning limit
+    chunkSizeWarningLimit: 600,
+    // Enable CSS code splitting
+    cssCodeSplit: true,
     rollupOptions: {
       output: {
         manualChunks: {
@@ -27,19 +25,18 @@ export default defineConfig({
           animations: ['framer-motion'],
           state: ['zustand', '@tanstack/react-query']
         },
-        // Optimize chunk size
+        // Optimize chunk naming
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]'
       }
-    },
-    // Increase chunk size warning limit
-    chunkSizeWarningLimit: 600,
-    // Enable CSS code splitting
-    cssCodeSplit: true
+    }
   },
   // Optimize dependencies
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom']
+  },
+  esbuild: {
+    drop: ['console', 'debugger'], // Remove console.log and debugger in production
   }
 })
