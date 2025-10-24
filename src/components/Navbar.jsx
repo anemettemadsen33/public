@@ -111,6 +111,22 @@ const Navbar = () => {
             >
               DE
             </button>
+            <button
+              onClick={() => changeLanguage('ar')}
+              className={`px-2 py-1 text-sm rounded ${
+                currentLang === 'ar' ? 'bg-primary-600 text-white' : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700'
+              }`}
+            >
+              AR
+            </button>
+            <button
+              onClick={() => changeLanguage('he')}
+              className={`px-2 py-1 text-sm rounded ${
+                currentLang === 'he' ? 'bg-primary-600 text-white' : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700'
+              }`}
+            >
+              HE
+            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -168,7 +184,7 @@ const Navbar = () => {
               {theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
             </button>
             
-            <div className="flex space-x-2 px-3 py-2">
+            <div className="flex flex-wrap gap-2 px-3 py-2">
               <button
                 onClick={() => changeLanguage('en')}
                 className={`px-3 py-1 text-sm rounded ${
@@ -192,6 +208,22 @@ const Navbar = () => {
                 }`}
               >
                 DE
+              </button>
+              <button
+                onClick={() => changeLanguage('ar')}
+                className={`px-3 py-1 text-sm rounded ${
+                  currentLang === 'ar' ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-gray-700 dark:text-gray-200'
+                }`}
+              >
+                AR
+              </button>
+              <button
+                onClick={() => changeLanguage('he')}
+                className={`px-3 py-1 text-sm rounded ${
+                  currentLang === 'he' ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-gray-700 dark:text-gray-200'
+                }`}
+              >
+                HE
               </button>
             </div>
           </div>
