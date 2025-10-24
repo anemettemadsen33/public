@@ -1,0 +1,153 @@
+{
+  "nav": {
+    "home": "Acasă",
+    "cars": "Mașini",
+    "trucks": "Camioane",
+    "vans": "Dube",
+    "campers": "Autorulote",
+    "motorcycles": "Motociclete",
+    "electric": "Electrice",
+    "construction": "Construcții",
+    "agricultural": "Agricole",
+    "dealers": "Dealeri",
+    "compare": "Compară"
+  },
+  "common": {
+    "search": "Căutare",
+    "filter": "Filtrează",
+    "sort": "Sortează",
+    "price": "Preț",
+    "year": "An",
+    "mileage": "Kilometraj",
+    "fuelType": "Combustibil",
+    "transmission": "Transmisie",
+    "viewDetails": "Vezi Detalii",
+    "compare": "Compară",
+    "contact": "Contact",
+    "buyNow": "Cumpără Acum",
+    "leasing": "Leasing",
+    "testDrive": "Programează Test Drive",
+    "from": "De la",
+    "to": "Până la",
+    "apply": "Aplică",
+    "reset": "Resetează",
+    "close": "Închide",
+    "submit": "Trimite",
+    "cancel": "Anulează"
+  },
+  "home": {
+    "title": "Găsește Vehiculul Perfect",
+    "subtitle": "Explorează colecția noastră extinsă de mașini, camioane, motociclete și multe altele",
+    "searchPlaceholder": "Caută după marcă, model sau cuvânt cheie...",
+    "featuredListings": "Anunțuri Recomandate",
+    "categories": "Categorii",
+    "whyChooseUs": "De ce să ne alegi",
+    "verifiedDealers": "Dealeri Verificați",
+    "wideSelection": "Selecție Largă",
+    "bestPrices": "Prețuri Competitive",
+    "easyFinancing": "Finanțare Ușoară"
+  },
+  "listing": {
+    "results": "Rezultate",
+    "sortBy": "Sortează după",
+    "newest": "Cele mai noi",
+    "priceLowToHigh": "Preț: Crescător",
+    "priceHighToLow": "Preț: Descrescător",
+    "mileageLowToHigh": "Kilometraj: Crescător",
+    "yearNewest": "An: Cele mai noi",
+    "noResults": "Nu am găsit vehicule care să corespundă criteriilor"
+  },
+  "details": {
+    "overview": "Prezentare",
+    "features": "Caracteristici",
+    "specifications": "Specificații",
+    "description": "Descriere",
+    "sellerInfo": "Informații Vânzător",
+    "vinCheck": "Verificare VIN",
+    "vinCheckDescription": "Obține un raport detaliat al istoricului vehiculului",
+    "enterVin": "Introdu VIN",
+    "checkHistory": "Verifică Istoricul"
+  },
+  "forms": {
+    "buyNow": {
+      "title": "Cumpără Acum",
+      "personalInfo": "Informații Personale",
+      "companyInfo": "Informații Companie",
+      "firstName": "Prenume",
+      "lastName": "Nume",
+      "email": "Email",
+      "phone": "Telefon",
+      "companyName": "Nume Companie",
+      "taxId": "CUI",
+      "address": "Adresă",
+      "city": "Oraș",
+      "postalCode": "Cod Poștal",
+      "country": "Țară",
+      "accountType": "Tip Cont",
+      "individual": "Persoană Fizică",
+      "company": "Persoană Juridică",
+      "paymentMethod": "Metodă de Plată",
+      "cashPayment": "Numerar",
+      "bankTransfer": "Transfer Bancar",
+      "financing": "Finanțare",
+      "comments": "Comentarii Adiționale"
+    },
+    "leasing": {
+      "title": "Cerere Leasing",
+      "monthlyBudget": "Buget Lunar",
+      "downPayment": "Avans",
+      "leasingPeriod": "Perioadă Leasing (luni)",
+      "estimatedMileage": "Kilometraj Anual Estimat"
+    },
+    "testDrive": {
+      "title": "Programează Test Drive",
+      "selectDate": "Selectează Data",
+      "selectTime": "Selectează Ora",
+      "preferredLocation": "Locație Preferată",
+      "additionalNotes": "Note Adiționale"
+    }
+  },
+  "compare": {
+    "title": "Compară Vehicule",
+    "selectVehicles": "Selectează până la 3 vehicule pentru comparație",
+    "addVehicle": "Adaugă Vehicul",
+    "removeVehicle": "Elimină Vehicul",
+    "specifications": "Specificații",
+    "engine": "Motor",
+    "power": "Putere",
+    "torque": "Cuplu",
+    "consumption": "Consum Combustibil",
+    "emissions": "Emisii CO2",
+    "topSpeed": "Viteză Maximă",
+    "acceleration": "0-100 km/h"
+  },
+  "dealers": {
+    "title": "Dealeri",
+    "allDealers": "Toți Dealerii",
+    "dealerProfile": "Profil Dealer",
+    "vehiclesInStock": "Vehicule în Stoc",
+    "rating": "Rating",
+    "reviews": "Recenzii",
+    "location": "Locație",
+    "openingHours": "Program",
+    "contactDealer": "Contactează Dealerul"
+  },
+  "chat": {
+    "title": "Asistent AI",
+    "placeholder": "Întreabă-mă orice despre vehicule...",
+    "examples": {
+      "1": "Caut un SUV sub 15.000€",
+      "2": "Care e diferența între diesel și electric?",
+      "3": "Arată-mi 3 modele populare din 2020"
+    }
+  },
+  "gamification": {
+    "points": "Puncte",
+    "badges": "Insigne",
+    "activeUser": "Utilizator Activ",
+    "reviewer": "Recenzor Top",
+    "reporter": "Raportori Calitate",
+    "level": "Nivel",
+    "nextLevel": "Următorul Nivel"
+  }
+}
