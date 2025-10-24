@@ -22,11 +22,11 @@ export const CompareProvider = ({ children }) => {
 
   const addToCompare = (vehicle) => {
     if (compareList.length >= 3) {
-      alert('You can compare up to 3 vehicles');
+      console.warn('You can compare up to 3 vehicles');
       return false;
     }
     if (compareList.find(v => v.id === vehicle.id)) {
-      alert('Vehicle already in comparison list');
+      console.warn('Vehicle already in comparison list');
       return false;
     }
     setCompareList([...compareList, vehicle]);
