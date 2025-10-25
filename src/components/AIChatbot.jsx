@@ -1,61 +1,47 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { chatWithAI } from '../services/ai'
 
 const AIChatbot = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: 'Hi! I\'m your auto marketplace assistant. How can I help you today?' }
-  ]);
-  const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+    {
+      role: 'assistant',
+      content: "Hi! I'm your auto marketplace assistant powered by AI. How can I help you today?",
+    },
+  ])
+  const [input, setInput] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const quickQuestions = [
     'What truck is best for heavy transport?',
     'Compare electric vs gasoline cars',
     'Best family SUV under $30,000',
-    'What to check when buying used?'
-  ];
+    'What to check when buying used?',
+  ]
 
   const handleSend = async () => {
-    if (!input.trim()) return;
+    if (!input.trim()) return
 
-    const userMessage = { role: 'user', content: input };
-    setMessages(prev => [...prev, userMessage]);
-    setInput('');
-    setIsLoading(true);
+    const userMessage = { role: 'user', content: input }
+    setMessages(prev => [...prev, userMessage])
+    setInput('')
+    setIsLoading(true)
 
-    // Simulate AI response (replace with actual OpenAI API call)
-    setTimeout(() => {
-      const assistantMessage = {
-        role: 'assistant',
-        content: getSimulatedResponse(input)
-      };
-      setMessages(prev => [...prev, assistantMessage]);
-      setIsLoading(false);
-    }, 1000);
-  };
+    // Use AI service for response
+    const response = await chatWithAI(input, messages)
 
-  const getSimulatedResponse = (question) => {
-    const lowerQ = question.toLowerCase();
-    
-    if (lowerQ.includes('truck') && lowerQ.includes('heavy')) {
-      return 'For heavy transport, I recommend looking at trucks with:\n• Diesel engines (better torque)\n• Payload capacity over 3,000 lbs\n• Strong suspension systems\n\nPopular choices: Ford F-250, RAM 2500, Chevy Silverado 2500HD';
+    const assistantMessage = {
+      role: 'assistant',
+      content: response.message || 'Sorry, I encountered an error. Please try again.',
     }
-    
-    if (lowerQ.includes('electric') || lowerQ.includes('gasoline')) {
-      return 'Electric vs Gasoline comparison:\n\n**Electric:**\n• Lower running costs\n• Less maintenance\n• Better for environment\n• Limited range\n\n**Gasoline:**\n• Longer range\n• More charging stations\n• Lower upfront cost\n• Higher fuel costs';
-    }
-    
-    if (lowerQ.includes('family') || lowerQ.includes('suv')) {
-      return 'Great family SUVs under $30k:\n• Honda CR-V - Reliable & spacious\n• Toyota RAV4 - Great safety ratings\n• Mazda CX-5 - Fun to drive\n• Hyundai Tucson - Good warranty\n\nAll offer 3rd row seating options!';
-    }
-    
-    return 'That\'s a great question! I recommend:\n1. Check vehicle history report\n2. Inspect for rust and damage\n3. Test drive thoroughly\n4. Get a mechanic inspection\n5. Review maintenance records\n\nWould you like more specific advice?';
-  };
+    setMessages(prev => [...prev, assistantMessage])
+    setIsLoading(false)
+  }
 
-  const handleQuickQuestion = (question) => {
-    setInput(question);
-  };
+  const handleQuickQuestion = question => {
+    setInput(question)
+  }
 
   return (
     <>
@@ -68,11 +54,21 @@ const AIChatbot = () => {
       >
         {isOpen ? (
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         ) : (
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+            />
           </svg>
         )}
       </motion.button>
@@ -88,9 +84,7 @@ const AIChatbot = () => {
           >
             {/* Header */}
             <div className="bg-primary-600 text-white p-4 rounded-t-lg">
-              <h3 className="font-semibold flex items-center gap-2">
-                🤖 AI Auto Assistant
-              </h3>
+              <h3 className="font-semibold flex items-center gap-2">🤖 AI Auto Assistant</h3>
               <p className="text-xs text-primary-100">Ask me anything about vehicles!</p>
             </div>
 
@@ -116,9 +110,18 @@ const AIChatbot = () => {
                 <div className="flex justify-start">
                   <div className="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg">
                     <div className="flex gap-1">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                      <div
+                        className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                        style={{ animationDelay: '0ms' }}
+                      ></div>
+                      <div
+                        className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                        style={{ animationDelay: '150ms' }}
+                      ></div>
+                      <div
+                        className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                        style={{ animationDelay: '300ms' }}
+                      ></div>
                     </div>
                   </div>
                 </div>
@@ -128,7 +131,9 @@ const AIChatbot = () => {
             {/* Quick Questions */}
             {messages.length === 1 && (
               <div className="p-2 border-t dark:border-gray-700">
-                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2 px-2">Quick questions:</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2 px-2">
+                  Quick questions:
+                </p>
                 <div className="space-y-1">
                   {quickQuestions.map((q, idx) => (
                     <button
@@ -149,8 +154,8 @@ const AIChatbot = () => {
                 <input
                   type="text"
                   value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+                  onChange={e => setInput(e.target.value)}
+                  onKeyPress={e => e.key === 'Enter' && handleSend()}
                   placeholder="Ask me anything..."
                   className="flex-1 px-3 py-2 border dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 outline-none"
                 />
@@ -160,7 +165,12 @@ const AIChatbot = () => {
                   className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                    />
                   </svg>
                 </button>
               </div>
@@ -169,7 +179,7 @@ const AIChatbot = () => {
         )}
       </AnimatePresence>
     </>
-  );
-};
+  )
+}
 
-export default AIChatbot;
+export default AIChatbot
