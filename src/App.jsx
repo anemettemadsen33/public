@@ -24,6 +24,7 @@ function App() {
                 <MainLayout>
                   <Routes>
                     <Route path="/" element={<HomePage />} />
+                    <Route path="/listings" element={<ListingPage />} />
                     <Route path="/cars" element={<ListingPage category="cars" />} />
                     <Route path="/trucks" element={<ListingPage category="trucks" />} />
                     <Route path="/vans" element={<ListingPage category="vans" />} />

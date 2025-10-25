@@ -19,6 +19,7 @@ const Navbar = () => {
   };
 
   const categories = [
+    { path: '/listings', label: t('nav.listings') },
     { path: '/cars', label: t('nav.cars') },
     { path: '/trucks', label: t('nav.trucks') },
     { path: '/vans', label: t('nav.vans') },
