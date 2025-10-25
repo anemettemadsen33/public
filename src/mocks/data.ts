@@ -222,18 +222,23 @@ export const generateDealers = (count: number = 20): Dealer[] => {
     'Platinum Motors',
   ]
 
-  return Array.from({ length: count }, (_, i) => ({
-    id: i + 1,
-    name: dealerNames[i] || `Dealer ${i + 1}`,
-    logo: `https://picsum.photos/seed/dealer-${i}/200/200`,
-    rating: 3.5 + Math.random() * 1.5,
-    reviews: Math.floor(Math.random() * 500) + 50,
-    location: locations[Math.floor(Math.random() * locations.length)]!,
-    phone: `(${Math.floor(Math.random() * 900) + 100}) ${Math.floor(Math.random() * 900) + 100}-${Math.floor(Math.random() * 9000) + 1000}`,
-    email: `contact@${dealerNames[i]?.toLowerCase().replace(/\s+/g, '') || `dealer${i}`}.com`,
-    verified: Math.random() > 0.3,
-    inventory: Math.floor(Math.random() * 50) + 10,
-  }))
+  return Array.from({ length: count }, (_, i) => {
+    const name = dealerNames[i] || `Dealer ${i + 1}`
+    const location = locations[Math.floor(Math.random() * locations.length)] || 'New York, NY'
+
+    return {
+      id: i + 1,
+      name,
+      logo: `https://picsum.photos/seed/dealer-${i}/200/200`,
+      rating: 3.5 + Math.random() * 1.5,
+      reviews: Math.floor(Math.random() * 500) + 50,
+      location,
+      phone: `(${Math.floor(Math.random() * 900) + 100}) ${Math.floor(Math.random() * 900) + 100}-${Math.floor(Math.random() * 9000) + 1000}`,
+      email: `contact@${name.toLowerCase().replace(/\s+/g, '')}.com`,
+      verified: Math.random() > 0.3,
+      inventory: Math.floor(Math.random() * 50) + 10,
+    }
+  })
 }
 
 export const generateBrands = (): Brand[] => {

@@ -4,18 +4,23 @@ import { mockVehicles, mockDealers, mockBrands, mockModels } from './data'
 // API base URL
 const API_BASE = '/api'
 
+// Constants
+const MAX_PRICE = 999999999
+const MIN_YEAR = 1900
+const MAX_YEAR = 2100
+
 export const handlers = [
   // Get all vehicles with filters and pagination
   http.get(`${API_BASE}/vehicles`, ({ request }) => {
     const url = new URL(request.url)
-    const page = parseInt(url.searchParams.get('page') || '1')
-    const limit = parseInt(url.searchParams.get('limit') || '20')
+    const page = parseInt(url.searchParams.get('page') || '1', 10)
+    const limit = parseInt(url.searchParams.get('limit') || '20', 10)
     const brand = url.searchParams.get('brand')
     const model = url.searchParams.get('model')
-    const minPrice = parseInt(url.searchParams.get('minPrice') || '0')
-    const maxPrice = parseInt(url.searchParams.get('maxPrice') || '999999999')
-    const minYear = parseInt(url.searchParams.get('minYear') || '1900')
-    const maxYear = parseInt(url.searchParams.get('maxYear') || '2100')
+    const minPrice = parseInt(url.searchParams.get('minPrice') || '0', 10)
+    const maxPrice = parseInt(url.searchParams.get('maxPrice') || String(MAX_PRICE), 10)
+    const minYear = parseInt(url.searchParams.get('minYear') || String(MIN_YEAR), 10)
+    const maxYear = parseInt(url.searchParams.get('maxYear') || String(MAX_YEAR), 10)
     const fuel = url.searchParams.get('fuel')
     const transmission = url.searchParams.get('transmission')
     const bodyType = url.searchParams.get('bodyType')
@@ -31,10 +36,10 @@ export const handlers = [
     if (model) {
       filtered = filtered.filter(v => v.model === model)
     }
-    if (minPrice > 0 || maxPrice < 999999999) {
+    if (minPrice > 0 || maxPrice < MAX_PRICE) {
       filtered = filtered.filter(v => v.price >= minPrice && v.price <= maxPrice)
     }
-    if (minYear > 1900 || maxYear < 2100) {
+    if (minYear > MIN_YEAR || maxYear < MAX_YEAR) {
       filtered = filtered.filter(v => v.year >= minYear && v.year <= maxYear)
     }
     if (fuel) {
@@ -80,7 +85,13 @@ export const handlers = [
   // Get single vehicle by ID
   http.get(`${API_BASE}/vehicles/:id`, ({ params }) => {
     const { id } = params
-    const vehicle = mockVehicles.find(v => v.id === parseInt(id as string))
+    const vehicleId = parseInt(id as string, 10)
+
+    if (isNaN(vehicleId)) {
+      return new HttpResponse(null, { status: 400 })
+    }
+
+    const vehicle = mockVehicles.find(v => v.id === vehicleId)
 
     if (!vehicle) {
       return new HttpResponse(null, { status: 404 })
@@ -101,7 +112,10 @@ export const handlers = [
 
     let models = mockModels
     if (brandId) {
-      models = models.filter(m => m.brandId === parseInt(brandId))
+      const parsedBrandId = parseInt(brandId, 10)
+      if (!isNaN(parsedBrandId)) {
+        models = models.filter(m => m.brandId === parsedBrandId)
+      }
     }
 
     return HttpResponse.json(models)
@@ -115,7 +129,13 @@ export const handlers = [
   // Get single dealer by ID
   http.get(`${API_BASE}/dealers/:id`, ({ params }) => {
     const { id } = params
-    const dealer = mockDealers.find(d => d.id === parseInt(id as string))
+    const dealerId = parseInt(id as string, 10)
+
+    if (isNaN(dealerId)) {
+      return new HttpResponse(null, { status: 400 })
+    }
+
+    const dealer = mockDealers.find(d => d.id === dealerId)
 
     if (!dealer) {
       return new HttpResponse(null, { status: 404 })
@@ -133,7 +153,12 @@ export const handlers = [
       return HttpResponse.json([])
     }
 
-    const currentVehicle = mockVehicles.find(v => v.id === parseInt(vehicleId))
+    const parsedVehicleId = parseInt(vehicleId, 10)
+    if (isNaN(parsedVehicleId)) {
+      return HttpResponse.json([])
+    }
+
+    const currentVehicle = mockVehicles.find(v => v.id === parsedVehicleId)
     if (!currentVehicle) {
       return HttpResponse.json([])
     }
