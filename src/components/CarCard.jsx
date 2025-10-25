@@ -3,13 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useCompare } from '../context/CompareContext';
-import { useCompareStore, usePreferencesStore } from '../store';
+import { usePreferencesStore } from '../store';
 import { formatPrice, formatMileage } from '../utils/helpers';
 
 const CarCard = ({ vehicle, sponsored = false }) => {
   const { t } = useTranslation();
   const { addToCompare, removeFromCompare, isInCompare } = useCompare();
-  const { addToCompare: zustandAddCompare, isInCompare: zustandIsInCompare } = useCompareStore();
   const { isSaved, saveVehicle, unsaveVehicle } = usePreferencesStore();
   const [imageLoaded, setImageLoaded] = useState(false);
   
