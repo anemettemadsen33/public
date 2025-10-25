@@ -1,6 +1,15 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+// Configuration for test drive locations
+const TEST_DRIVE_LOCATIONS = [
+  { value: 'downtown', label: 'Downtown Showroom' },
+  { value: 'north', label: 'North Branch' },
+  { value: 'south', label: 'South Branch' },
+  { value: 'west', label: 'West Branch' },
+  { value: 'delivery', label: 'Home Delivery' }
+];
+
 const TestDriveModal = ({ isOpen, onClose, vehicle }) => {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
@@ -195,11 +204,11 @@ const TestDriveModal = ({ isOpen, onClose, vehicle }) => {
                   className="input-field"
                 >
                   <option value="">Select location...</option>
-                  <option value="downtown">Downtown Showroom</option>
-                  <option value="north">North Branch</option>
-                  <option value="south">South Branch</option>
-                  <option value="west">West Branch</option>
-                  <option value="delivery">Home Delivery</option>
+                  {TEST_DRIVE_LOCATIONS.map(location => (
+                    <option key={location.value} value={location.value}>
+                      {location.label}
+                    </option>
+                  ))}
                 </select>
               </div>
 

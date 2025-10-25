@@ -137,7 +137,7 @@ const VehicleDetailsPage = () => {
             </button>
             <button 
               onClick={() => setShowLeasingModal(true)}
-              className="btn-secondary w-full bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition-colors"
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition-colors font-medium"
             >
               {t('common.leasing')}
             </button>

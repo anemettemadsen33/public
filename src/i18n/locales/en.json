@@ -66,7 +66,15 @@
     "vinCheck": "VIN Check",
     "vinCheckDescription": "Get a detailed vehicle history report",
     "enterVin": "Enter VIN",
-    "checkHistory": "Check History"
+    "checkHistory": "Check History",
+    "vinValidation": "VIN must be 17 characters (no I, O, or Q)",
+    "whatYouGet": "What you'll get:",
+    "accidentHistory": "Accident history",
+    "numberOfOwners": "Number of previous owners",
+    "serviceRecords": "Service and maintenance records",
+    "openRecalls": "Open recalls",
+    "mileageVerification": "Mileage verification",
+    "titleStatus": "Title status"
   },
   "forms": {
     "buyNow": {
