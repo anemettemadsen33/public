@@ -3,12 +3,20 @@ import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { mockVehicles } from '../utils/mockData';
 import { formatPrice, formatMileage } from '../utils/helpers';
+import BuyNowModal from '../components/BuyNowModal';
+import LeasingModal from '../components/LeasingModal';
+import TestDriveModal from '../components/TestDriveModal';
+import VINCheckModal from '../components/VINCheckModal';
 
 const VehicleDetailsPage = () => {
   const { id } = useParams();
   const { t } = useTranslation();
   const [vehicle, setVehicle] = useState(null);
   const [currentImage, setCurrentImage] = useState(0);
+  const [showBuyNowModal, setShowBuyNowModal] = useState(false);
+  const [showLeasingModal, setShowLeasingModal] = useState(false);
+  const [showTestDriveModal, setShowTestDriveModal] = useState(false);
+  const [showVINCheckModal, setShowVINCheckModal] = useState(false);
 
   useEffect(() => {
     const foundVehicle = mockVehicles.find(v => v.id === parseInt(id));
@@ -120,16 +128,58 @@ const VehicleDetailsPage = () => {
           )}
 
           {/* Action Buttons */}
-          <div className="grid grid-cols-2 gap-4">
-            <button className="btn-primary w-full">
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <button 
+              onClick={() => setShowBuyNowModal(true)}
+              className="btn-primary w-full"
+            >
               {t('common.buyNow')}
             </button>
-            <button className="btn-outline w-full">
+            <button 
+              onClick={() => setShowLeasingModal(true)}
+              className="btn-secondary w-full bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition-colors"
+            >
+              {t('common.leasing')}
+            </button>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <button 
+              onClick={() => setShowTestDriveModal(true)}
+              className="btn-outline w-full"
+            >
               {t('common.testDrive')}
+            </button>
+            <button 
+              onClick={() => setShowVINCheckModal(true)}
+              className="btn-outline w-full"
+            >
+              {t('details.vinCheck')}
             </button>
           </div>
         </div>
       </div>
+
+      {/* Modals */}
+      <BuyNowModal 
+        isOpen={showBuyNowModal} 
+        onClose={() => setShowBuyNowModal(false)} 
+        vehicle={vehicle}
+      />
+      <LeasingModal 
+        isOpen={showLeasingModal} 
+        onClose={() => setShowLeasingModal(false)} 
+        vehicle={vehicle}
+      />
+      <TestDriveModal 
+        isOpen={showTestDriveModal} 
+        onClose={() => setShowTestDriveModal(false)} 
+        vehicle={vehicle}
+      />
+      <VINCheckModal 
+        isOpen={showVINCheckModal} 
+        onClose={() => setShowVINCheckModal(false)} 
+        vehicle={vehicle}
+      />
     </div>
   );
 };
