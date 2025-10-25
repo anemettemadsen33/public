@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "cars": "מכוניות",
+    "trucks": "משאיות",
+    "vans": "טנדרים",
+    "campers": "קרוואנים",
+    "motorcycles": "אופנועים",
+    "electric": "חשמלי",
+    "construction": "ציוד בנייה",
+    "agricultural": "ציוד חקלאי",
+    "dealers": "סוכנים",
+    "compare": "השוואה"
+  },
+  "common": {
+    "search": "חיפוש",
+    "filter": "סינון",
+    "reset": "איפוס",
+    "price": "מחיר",
+    "from": "מ",
+    "to": "עד",
+    "year": "שנה",
+    "mileage": "קילומטראז'",
+    "fuelType": "סוג דלק",
+    "transmission": "תיבת הילוכים",
+    "viewDetails": "פרטים",
+    "compare": "השווה",
+    "save": "שמור",
+    "contact": "צור קשר",
+    "back": "חזור"
+  },
+  "home": {
+    "hero": {
+      "title": "מצא את רכב החלומות שלך",
+      "subtitle": "עיין באלפי רכבים מסוכנים מהימנים",
+      "cta": "התחל חיפוש"
+    },
+    "categories": {
+      "title": "עיון לפי קטגוריה",
+      "subtitle": "בחר את קטגוריית הרכב המועדפת עליך"
+    },
+    "featured": {
+      "title": "רכבים מומלצים",
+      "subtitle": "בדוק את ההצעות הטובות ביותר שלנו"
+    }
+  },
+  "listing": {
+    "title": "תוצאות חיפוש",
+    "noResults": "לא נמצאו רכבים",
+    "showingResults": "מציג {{count}} רכבים",
+    "sortBy": "מיין לפי",
+    "newest": "החדשים ביותר",
+    "priceLowHigh": "מחיר: נמוך לגבוה",
+    "priceHighLow": "מחיר: גבוה לנמוך",
+    "mileageLow": "קילומטראז': נמוך",
+    "yearNewest": "שנה: החדש ביותר"
+  },
+  "details": {
+    "overview": "סקירה כללית",
+    "specifications": "מפרט",
+    "features": "תכונות",
+    "description": "תיאור",
+    "contactDealer": "צור קשר עם הסוכן",
+    "bookTestDrive": "הזמן נסיעת מבחן",
+    "buyNow": "קנה עכשיו",
+    "requestLeasing": "בקש ליסינג"
+  },
+  "compare": {
+    "title": "השוואת רכבים",
+    "selectVehicles": "בחר עד 3 רכבים להשוואה",
+    "noVehicles": "עדיין לא נוספו רכבים להשוואה",
+    "clearAll": "נקה הכל"
+  }
+}

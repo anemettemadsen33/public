@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "cars": "سيارات",
+    "trucks": "شاحنات",
+    "vans": "شاحنات صغيرة",
+    "campers": "بيوت متنقلة",
+    "motorcycles": "دراجات نارية",
+    "electric": "كهربائي",
+    "construction": "معدات البناء",
+    "agricultural": "معدات زراعية",
+    "dealers": "الوكلاء",
+    "compare": "مقارنة"
+  },
+  "common": {
+    "search": "بحث",
+    "filter": "تصفية",
+    "reset": "إعادة تعيين",
+    "price": "السعر",
+    "from": "من",
+    "to": "إلى",
+    "year": "السنة",
+    "mileage": "المسافة المقطوعة",
+    "fuelType": "نوع الوقود",
+    "transmission": "ناقل الحركة",
+    "viewDetails": "عرض التفاصيل",
+    "compare": "قارن",
+    "save": "حفظ",
+    "contact": "اتصل",
+    "back": "رجوع"
+  },
+  "home": {
+    "hero": {
+      "title": "اعثر على سيارة أحلامك",
+      "subtitle": "تصفح الآلاف من المركبات من وكلاء موثوقين",
+      "cta": "ابدأ البحث"
+    },
+    "categories": {
+      "title": "تصفح حسب الفئة",
+      "subtitle": "اختر فئة المركبة المفضلة لديك"
+    },
+    "featured": {
+      "title": "المركبات المميزة",
+      "subtitle": "تحقق من أفضل العروض لدينا"
+    }
+  },
+  "listing": {
+    "title": "نتائج البحث",
+    "noResults": "لم يتم العثور على مركبات",
+    "showingResults": "عرض {{count}} مركبة",
+    "sortBy": "ترتيب حسب",
+    "newest": "الأحدث",
+    "priceLowHigh": "السعر: من الأقل إلى الأعلى",
+    "priceHighLow": "السعر: من الأعلى إلى الأقل",
+    "mileageLow": "المسافة المقطوعة: الأقل",
+    "yearNewest": "السنة: الأحدث"
+  },
+  "details": {
+    "overview": "نظرة عامة",
+    "specifications": "المواصفات",
+    "features": "الميزات",
+    "description": "الوصف",
+    "contactDealer": "اتصل بالوكيل",
+    "bookTestDrive": "احجز قيادة تجريبية",
+    "buyNow": "اشترِ الآن",
+    "requestLeasing": "اطلب التأجير"
+  },
+  "compare": {
+    "title": "مقارنة المركبات",
+    "selectVehicles": "حدد ما يصل إلى 3 مركبات للمقارنة",
+    "noVehicles": "لم يتم إضافة مركبات للمقارنة بعد",
+    "clearAll": "مسح الكل"
+  }
+}
