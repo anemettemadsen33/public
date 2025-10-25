@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFilters } from '../context/FilterContext';
 import { useFilterStore } from '../store';
@@ -25,7 +25,7 @@ const useDebounce = (value, delay) => {
 const FiltersPanel = () => {
   const { t } = useTranslation();
   const { filters, updateFilter, resetFilters } = useFilters();
-  const { filters: zustandFilters, setFilter, resetFilters: zustandReset } = useFilterStore();
+  const { setFilter, resetFilters: zustandReset } = useFilterStore();
   
   // Local state for immediate input feedback
   const [searchInput, setSearchInput] = useState(filters.search || '');
@@ -39,7 +39,7 @@ const FiltersPanel = () => {
       updateFilter('search', debouncedSearch);
       setFilter('search', debouncedSearch);
     }
-  }, [debouncedSearch]);
+  }, [debouncedSearch, filters.search, setFilter, updateFilter]);
 
   const handleChange = (key, value) => {
     updateFilter(key, value);
