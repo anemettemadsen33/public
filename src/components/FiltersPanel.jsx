@@ -25,7 +25,7 @@ const useDebounce = (value, delay) => {
 const FiltersPanel = () => {
   const { t } = useTranslation();
   const { filters, updateFilter, resetFilters } = useFilters();
-  const { filters: _zustandFilters, setFilter, resetFilters: zustandReset } = useFilterStore();
+  const { setFilter, resetFilters: zustandReset } = useFilterStore();
   
   // Local state for immediate input feedback
   const [searchInput, setSearchInput] = useState(filters.search || '');
