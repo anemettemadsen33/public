@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Adaugă anunț mașină">
+    <title>Adaugă Anunț - AutoMarket</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">🚗 AutoMarket</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="results.html">Căutare</a></li>
+                <li><a href="post.html">Adaugă Anunț</a></li>
+                <li><a href="#" id="authLink">Autentificare</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Post Form Section -->
+    <section class="container">
+        <div class="post-form">
+            <h2>Adaugă un Anunț Nou</h2>
+            <p style="color: #666; margin-bottom: 2rem;">Completează formularul de mai jos pentru a publica anunțul tău</p>
+
+            <div id="successMessage" class="success-message d-none">
+                Anunțul a fost adăugat cu succes! Redirecting...
+            </div>
+
+            <form id="postForm">
+                <!-- Informații de Bază -->
+                <div class="form-section">
+                    <h3>Informații de Bază</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="marca">Marcă *</label>
+                            <select id="marca" name="marca" required>
+                                <option value="">Selectează marca</option>
+                                <option value="BMW">BMW</option>
+                                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                                <option value="Audi">Audi</option>
+                                <option value="Volkswagen">Volkswagen</option>
+                                <option value="Toyota">Toyota</option>
+                                <option value="Ford">Ford</option>
+                                <option value="Skoda">Skoda</option>
+                                <option value="Renault">Renault</option>
+                                <option value="Peugeot">Peugeot</option>
+                                <option value="Opel">Opel</option>
+                            </select>
+                            <span class="error-message" id="marcaError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="model">Model *</label>
+                            <input type="text" id="model" name="model" required placeholder="Ex: Golf, A4, Seria 3">
+                            <span class="error-message" id="modelError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="an">An Fabricație *</label>
+                            <input type="number" id="an" name="an" required min="1990" max="2024" placeholder="2020">
+                            <span class="error-message" id="anError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="km">Kilometraj *</label>
+                            <input type="number" id="km" name="km" required min="0" max="500000" placeholder="50000">
+                            <span class="error-message" id="kmError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="combustibil">Combustibil *</label>
+                            <select id="combustibil" name="combustibil" required>
+                                <option value="">Selectează tipul</option>
+                                <option value="Benzină">Benzină</option>
+                                <option value="Diesel">Diesel</option>
+                                <option value="Hybrid">Hybrid</option>
+                                <option value="Electric">Electric</option>
+                                <option value="GPL">GPL</option>
+                            </select>
+                            <span class="error-message" id="combustibilError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="transmisie">Transmisie *</label>
+                            <select id="transmisie" name="transmisie" required>
+                                <option value="">Selectează tipul</option>
+                                <option value="Manuală">Manuală</option>
+                                <option value="Automată">Automată</option>
+                            </select>
+                            <span class="error-message" id="transmisieError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pret">Preț (€) *</label>
+                            <input type="number" id="pret" name="pret" required min="500" max="1000000" placeholder="25000">
+                            <span class="error-message" id="pretError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="putere">Putere (CP)</label>
+                            <input type="number" id="putere" name="putere" min="40" max="1000" placeholder="150">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="culoare">Culoare</label>
+                            <input type="text" id="culoare" name="culoare" placeholder="Ex: Negru, Alb">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Descriere -->
+                <div class="form-section">
+                    <h3>Descriere</h3>
+                    <div class="form-group">
+                        <label for="descriere">Descriere Detaliată *</label>
+                        <textarea id="descriere" name="descriere" required rows="6" placeholder="Descrie mașina în detaliu: dotări, stare tehnică, service, etc."></textarea>
+                        <span class="error-message" id="descriereError"></span>
+                    </div>
+                </div>
+
+                <!-- Imagini -->
+                <div class="form-section">
+                    <h3>Imagini</h3>
+                    <div class="form-group">
+                        <label for="images">Încarcă Imagini (max 10)</label>
+                        <div class="image-upload" id="imageUploadArea">
+                            <p>📸 Click sau trage imaginile aici</p>
+                            <p style="font-size: 0.9rem; color: #666;">Format acceptat: JPG, PNG. Max 5MB per imagine.</p>
+                            <input type="file" id="images" name="images" accept="image/*" multiple style="display: none;">
+                        </div>
+                        <div class="image-preview" id="imagePreview"></div>
+                        <span class="error-message" id="imagesError"></span>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="form-section">
+                    <h3>Informații Contact</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="contactNume">Nume *</label>
+                            <input type="text" id="contactNume" name="contactNume" required placeholder="Numele tău sau al companiei">
+                            <span class="error-message" id="contactNumeError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactTelefon">Telefon *</label>
+                            <input type="tel" id="contactTelefon" name="contactTelefon" required placeholder="+40 722 123 456">
+                            <span class="error-message" id="contactTelefonError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactEmail">Email *</label>
+                            <input type="email" id="contactEmail" name="contactEmail" required placeholder="email@example.com">
+                            <span class="error-message" id="contactEmailError"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <div style="margin-top: 2rem;">
+                    <button type="submit" class="btn btn-primary btn-block">Publică Anunțul</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AutoMarket</h3>
+                    <p>Cea mai mare platformă auto din România. Găsește mașina perfectă pentru tine.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Link-uri Utile</h3>
+                    <ul>
+                        <li><a href="results.html">Căutare Mașini</a></li>
+                        <li><a href="post.html">Adaugă Anunț</a></li>
+                        <li><a href="#">Despre Noi</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Termeni și Condiții</a></li>
+                        <li><a href="#">Politică de Confidențialitate</a></li>
+                        <li><a href="#">Politică Cookie-uri</a></li>
+                        <li><a href="#">GDPR</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Urmărește-ne</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AutoMarket. Toate drepturile rezervate.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/post.js"></script>
+</body>
+</html>

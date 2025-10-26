@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rezultate căutare mașini">
+    <title>Rezultate Căutare - AutoMarket</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">🚗 AutoMarket</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="results.html">Căutare</a></li>
+                <li><a href="post.html">Adaugă Anunț</a></li>
+                <li><a href="#" id="authLink">Autentificare</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Results Section -->
+    <section class="results-section container">
+        <h1 style="margin-bottom: 2rem; color: #2c3e50;">Rezultate Căutare</h1>
+        
+        <!-- Filters and Sort -->
+        <div class="filters-sort">
+            <div class="active-filters" id="activeFilters">
+                <!-- Active filters will be displayed here -->
+            </div>
+            <div class="sort-controls">
+                <label for="sortBy">Sortează după:</label>
+                <select id="sortBy">
+                    <option value="">Relevantă</option>
+                    <option value="pret-asc">Preț crescător</option>
+                    <option value="pret-desc">Preț descrescător</option>
+                    <option value="an-desc">An descrescător</option>
+                    <option value="an-asc">An crescător</option>
+                    <option value="km-asc">Kilometraj crescător</option>
+                    <option value="km-desc">Kilometraj descrescător</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="loading d-none">
+            <div class="spinner"></div>
+            <p>Se încarcă rezultatele...</p>
+        </div>
+
+        <!-- Results Count -->
+        <div id="resultsCount" style="margin-bottom: 1rem; color: #666;">
+            <!-- Results count will be displayed here -->
+        </div>
+
+        <!-- Cars Grid -->
+        <div class="cars-grid" id="carsGrid">
+            <!-- Cars will be loaded here by JavaScript -->
+        </div>
+
+        <!-- No Results -->
+        <div id="noResults" class="d-none" style="text-align: center; padding: 3rem;">
+            <h2 style="color: #666;">Nu s-au găsit rezultate</h2>
+            <p>Încearcă să modifici filtrele de căutare</p>
+            <a href="index.html" class="btn btn-primary" style="margin-top: 1rem;">Înapoi la pagina principală</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AutoMarket</h3>
+                    <p>Cea mai mare platformă auto din România. Găsește mașina perfectă pentru tine.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Link-uri Utile</h3>
+                    <ul>
+                        <li><a href="results.html">Căutare Mașini</a></li>
+                        <li><a href="post.html">Adaugă Anunț</a></li>
+                        <li><a href="#">Despre Noi</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Termeni și Condiții</a></li>
+                        <li><a href="#">Politică de Confidențialitate</a></li>
+                        <li><a href="#">Politică Cookie-uri</a></li>
+                        <li><a href="#">GDPR</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Urmărește-ne</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AutoMarket. Toate drepturile rezervate.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/results.js"></script>
+</body>
+</html>

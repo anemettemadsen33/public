@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "marca": "BMW",
+    "model": "Seria 3",
+    "an": 2020,
+    "km": 45000,
+    "combustibil": "Diesel",
+    "transmisie": "Automată",
+    "pret": 28500,
+    "descriere": "BMW Seria 3 în stare excelentă, un singur proprietar, service complet.",
+    "imagine": "images/bmw-seria3.jpg",
+    "imagini": [
+      "images/bmw-seria3.jpg",
+      "images/bmw-seria3-2.jpg",
+      "images/bmw-seria3-3.jpg"
+    ],
+    "specificatii": {
+      "putere": "190 CP",
+      "culoare": "Negru metalic",
+      "numarUsi": "4",
+      "locuri": "5",
+      "emisiiCO2": "125 g/km",
+      "normaPoluare": "Euro 6"
+    },
+    "contact": {
+      "nume": "Auto Premium SRL",
+      "telefon": "+40 721 234 567",
+      "email": "contact@autopremium.ro"
+    }
+  },
+  {
+    "id": 2,
+    "marca": "Mercedes-Benz",
+    "model": "Clasa C",
+    "an": 2019,
+    "km": 62000,
+    "combustibil": "Benzină",
+    "transmisie": "Automată",
+    "pret": 32000,
+    "descriere": "Mercedes-Benz Clasa C, echipare premium, sistem navigație, interior piele.",
+    "imagine": "images/mercedes-c.jpg",
+    "imagini": [
+      "images/mercedes-c.jpg",
+      "images/mercedes-c-2.jpg",
+      "images/mercedes-c-3.jpg"
+    ],
+    "specificatii": {
+      "putere": "184 CP",
+      "culoare": "Argintiu",
+      "numarUsi": "4",
+      "locuri": "5",
+      "emisiiCO2": "138 g/km",
+      "normaPoluare": "Euro 6"
+    },
+    "contact": {
+      "nume": "Mercedes Center",
+      "telefon": "+40 722 345 678",
+      "email": "sales@mercedescenter.ro"
+    }
+  },
+  {
+    "id": 3,
+    "marca": "Audi",
+    "model": "A4",
+    "an": 2021,
+    "km": 28000,
+    "combustibil": "Diesel",
+    "transmisie": "Automată",
+    "pret": 35500,
+    "descriere": "Audi A4 ca nou, dotări complete, garantie extinsă.",
+    "imagine": "images/audi-a4.jpg",
+    "imagini": [
+      "images/audi-a4.jpg",
+      "images/audi-a4-2.jpg",
+      "images/audi-a4-3.jpg"
+    ],
+    "specificatii": {
+      "putere": "204 CP",
+      "culoare": "Albastru",
+      "numarUsi": "4",
+      "locuri": "5",
+      "emisiiCO2": "119 g/km",
+      "normaPoluare": "Euro 6d"
+    },
+    "contact": {
+      "nume": "Audi Specialist",
+      "telefon": "+40 723 456 789",
+      "email": "info@audispecialist.ro"
+    }
+  },
+  {
+    "id": 4,
+    "marca": "Volkswagen",
+    "model": "Golf",
+    "an": 2018,
+    "km": 75000,
+    "combustibil": "Benzină",
+    "transmisie": "Manuală",
+    "pret": 15000,
+    "descriere": "VW Golf 7, perfect pentru oraș, consum redus.",
+    "imagine": "images/vw-golf.jpg",
+    "imagini": [
+      "images/vw-golf.jpg",
+      "images/vw-golf-2.jpg",
+      "images/vw-golf-3.jpg"
+    ],
+    "specificatii": {
+      "putere": "115 CP",
+      "culoare": "Gri",
+      "numarUsi": "5",
+      "locuri": "5",
+      "emisiiCO2": "115 g/km",
+      "normaPoluare": "Euro 6"
+    },
+    "contact": {
+      "nume": "VW Trade",
+      "telefon": "+40 724 567 890",
+      "email": "vw@trade.ro"
+    }
+  },
+  {
+    "id": 5,
+    "marca": "Toyota",
+    "model": "Corolla",
+    "an": 2020,
+    "km": 35000,
+    "combustibil": "Hybrid",
+    "transmisie": "Automată",
+    "pret": 22000,
+    "descriere": "Toyota Corolla Hybrid, consum minim, fiabilitate maximă.",
+    "imagine": "images/toyota-corolla.jpg",
+    "imagini": [
+      "images/toyota-corolla.jpg",
+      "images/toyota-corolla-2.jpg",
+      "images/toyota-corolla-3.jpg"
+    ],
+    "specificatii": {
+      "putere": "122 CP",
+      "culoare": "Alb perlat",
+      "numarUsi": "4",
+      "locuri": "5",
+      "emisiiCO2": "76 g/km",
+      "normaPoluare": "Euro 6d"
+    },
+    "contact": {
+      "nume": "Toyota Center",
+      "telefon": "+40 725 678 901",
+      "email": "contact@toyotacenter.ro"
+    }
+  },
+  {
+    "id": 6,
+    "marca": "Ford",
+    "model": "Focus",
+    "an": 2019,
+    "km": 55000,
+    "combustibil": "Diesel",
+    "transmisie": "Manuală",
+    "pret": 14500,
+    "descriere": "Ford Focus, motor economic, ideal pentru drumuri lungi.",
+    "imagine": "images/ford-focus.jpg",
+    "imagini": [
+      "images/ford-focus.jpg",
+      "images/ford-focus-2.jpg",
+      "images/ford-focus-3.jpg"
+    ],
+    "specificatii": {
+      "putere": "120 CP",
+      "culoare": "Roșu",
+      "numarUsi": "5",
+      "locuri": "5",
+      "emisiiCO2": "108 g/km",
+      "normaPoluare": "Euro 6"
+    },
+    "contact": {
+      "nume": "Ford Sales",
+      "telefon": "+40 726 789 012",
+      "email": "sales@fordsales.ro"
+    }
+  },
+  {
+    "id": 7,
+    "marca": "Skoda",
+    "model": "Octavia",
+    "an": 2021,
+    "km": 20000,
+    "combustibil": "Benzină",
+    "transmisie": "Automată",
+    "pret": 24000,
+    "descriere": "Skoda Octavia aproape nouă, spațiu generos, tehnologie modernă.",
+    "imagine": "images/skoda-octavia.jpg",
+    "imagini": [
+      "images/skoda-octavia.jpg",
+      "images/skoda-octavia-2.jpg",
+      "images/skoda-octavia-3.jpg"
+    ],
+    "specificatii": {
+      "putere": "150 CP",
+      "culoare": "Verde",
+      "numarUsi": "5",
+      "locuri": "5",
+      "emisiiCO2": "129 g/km",
+      "normaPoluare": "Euro 6d"
+    },
+    "contact": {
+      "nume": "Skoda Expert",
+      "telefon": "+40 727 890 123",
+      "email": "info@skodaexpert.ro"
+    }
+  },
+  {
+    "id": 8,
+    "marca": "Renault",
+    "model": "Megane",
+    "an": 2018,
+    "km": 68000,
+    "combustibil": "Diesel",
+    "transmisie": "Manuală",
+    "pret": 12500,
+    "descriere": "Renault Megane, consum mic, întreținere la zi.",
+    "imagine": "images/renault-megane.jpg",
+    "imagini": [
+      "images/renault-megane.jpg",
+      "images/renault-megane-2.jpg",
+      "images/renault-megane-3.jpg"
+    ],
+    "specificatii": {
+      "putere": "110 CP",
+      "culoare": "Gri închis",
+      "numarUsi": "5",
+      "locuri": "5",
+      "emisiiCO2": "102 g/km",
+      "normaPoluare": "Euro 6"
+    },
+    "contact": {
+      "nume": "Renault Pro",
+      "telefon": "+40 728 901 234",
+      "email": "contact@renaultpro.ro"
+    }
+  }
+]
