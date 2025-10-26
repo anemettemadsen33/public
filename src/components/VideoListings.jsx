@@ -146,7 +146,9 @@ const VideoListings = ({ vehicleId, dealerId, onVideoUploaded }) => {
 
   /**
    * Setup WebRTC peer connection (production implementation)
+   * @unused - Reserved for future WebRTC implementation
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const setupPeerConnection = () => {
     // WebRTC configuration
     const configuration = {
@@ -169,6 +171,7 @@ const VideoListings = ({ vehicleId, dealerId, onVideoUploaded }) => {
     // Handle incoming tracks
     peerConnection.ontrack = (event) => {
       // Display remote stream
+      // eslint-disable-next-line no-console
       console.log('Received remote track:', event);
     };
 
@@ -176,6 +179,7 @@ const VideoListings = ({ vehicleId, dealerId, onVideoUploaded }) => {
     peerConnection.onicecandidate = (event) => {
       if (event.candidate) {
         // Send candidate to remote peer via signaling server
+        // eslint-disable-next-line no-console
         console.log('ICE candidate:', event.candidate);
       }
     };
