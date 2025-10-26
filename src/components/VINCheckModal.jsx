@@ -1,40 +1,31 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import vinCheckService from '../services/vinCheck';
 
 const VINCheckModal = ({ isOpen, onClose, vehicle }) => {
   const { t } = useTranslation();
   const [vin, setVin] = useState('');
   const [isChecking, setIsChecking] = useState(false);
   const [checkResult, setCheckResult] = useState(null);
+  const [_error, setError] = useState(null);
 
   if (!isOpen) return null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsChecking(true);
+    setError(null);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Use the real VIN check service
+      const result = await vinCheckService.getVehicleHistory(vin);
+      setCheckResult(result);
+    } catch (err) {
+      setError(err.message || 'Failed to check VIN. Please try again.');
+      console.error('VIN check error:', err);
+    } finally {
       setIsChecking(false);
-      setCheckResult({
-        vin: vin,
-        status: 'clean',
-        accidents: 0,
-        owners: 2,
-        serviceRecords: 12,
-        recalls: 0,
-        mileageVerified: true,
-        titleStatus: 'Clean',
-        lastReported: '2023-08-15',
-        details: {
-          manufacturer: vehicle?.make || 'Unknown',
-          model: vehicle?.model || 'Unknown',
-          year: vehicle?.year || 'Unknown',
-          engine: vehicle?.engine || 'Unknown',
-          transmission: vehicle?.transmission || 'Unknown'
-        }
-      });
-    }, 2000);
+    }
   };
 
   const handleReset = () => {
@@ -212,19 +203,19 @@ const VINCheckModal = ({ isOpen, onClose, vehicle }) => {
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div>
                     <span className="text-gray-600 dark:text-gray-400">Manufacturer:</span>
-                    <p className="font-semibold text-gray-900 dark:text-gray-100">{checkResult.details.manufacturer}</p>
+                    <p className="font-semibold text-gray-900 dark:text-gray-100">{checkResult.vehicle?.make || checkResult.specifications?.make}</p>
                   </div>
                   <div>
                     <span className="text-gray-600 dark:text-gray-400">Model:</span>
-                    <p className="font-semibold text-gray-900 dark:text-gray-100">{checkResult.details.model}</p>
+                    <p className="font-semibold text-gray-900 dark:text-gray-100">{checkResult.vehicle?.model || checkResult.specifications?.model}</p>
                   </div>
                   <div>
                     <span className="text-gray-600 dark:text-gray-400">Year:</span>
-                    <p className="font-semibold text-gray-900 dark:text-gray-100">{checkResult.details.year}</p>
+                    <p className="font-semibold text-gray-900 dark:text-gray-100">{checkResult.vehicle?.year || checkResult.specifications?.year}</p>
                   </div>
                   <div>
                     <span className="text-gray-600 dark:text-gray-400">Engine:</span>
-                    <p className="font-semibold text-gray-900 dark:text-gray-100">{checkResult.details.engine}</p>
+                    <p className="font-semibold text-gray-900 dark:text-gray-100">{checkResult.vehicle?.engine || checkResult.specifications?.engine}</p>
                   </div>
                 </div>
               </div>
@@ -233,37 +224,37 @@ const VINCheckModal = ({ isOpen, onClose, vehicle }) => {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <div className="card p-4 text-center">
                   <div className="text-2xl font-bold text-green-600 dark:text-green-400">
-                    {checkResult.accidents}
+                    {checkResult.accidents?.totalAccidents || 0}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">Accidents</div>
                 </div>
                 <div className="card p-4 text-center">
                   <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                    {checkResult.owners}
+                    {checkResult.ownership?.totalOwners || 0}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">Owners</div>
                 </div>
                 <div className="card p-4 text-center">
                   <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-                    {checkResult.serviceRecords}
+                    {checkResult.serviceRecords?.totalRecords || 0}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">Service Records</div>
                 </div>
                 <div className="card p-4 text-center">
                   <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
-                    {checkResult.recalls}
+                    {checkResult.recalls?.openRecalls || 0}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">Open Recalls</div>
                 </div>
                 <div className="card p-4 text-center">
                   <div className="text-2xl">
-                    {checkResult.mileageVerified ? '✓' : '✗'}
+                    {checkResult.odometer?.verified ? '✓' : '✗'}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">Mileage Verified</div>
                 </div>
                 <div className="card p-4 text-center">
                   <div className="text-sm font-bold text-gray-900 dark:text-gray-100">
-                    {checkResult.titleStatus}
+                    {checkResult.titleInfo?.status || 'Unknown'}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">Title Status</div>
                 </div>
