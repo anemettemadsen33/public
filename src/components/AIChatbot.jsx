@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import openAIService from '../services/openai';
 
 const AIChatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,36 +22,34 @@ const AIChatbot = () => {
 
     const userMessage = { role: 'user', content: input };
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = input;
     setInput('');
     setIsLoading(true);
 
-    // Simulate AI response (replace with actual OpenAI API call)
-    setTimeout(() => {
+    try {
+      // Use OpenAI service (falls back to simulated if API not configured)
+      const conversationHistory = messages.map(msg => ({
+        role: msg.role,
+        content: msg.content
+      }));
+      
+      const response = await openAIService.sendMessage(currentInput, conversationHistory);
+      
       const assistantMessage = {
         role: 'assistant',
-        content: getSimulatedResponse(input)
+        content: response.message
       };
       setMessages(prev => [...prev, assistantMessage]);
-      setIsLoading(false);
-    }, 1000);
-  };
-
-  const getSimulatedResponse = (question) => {
-    const lowerQ = question.toLowerCase();
-    
-    if (lowerQ.includes('truck') && lowerQ.includes('heavy')) {
-      return 'For heavy transport, I recommend looking at trucks with:\n• Diesel engines (better torque)\n• Payload capacity over 3,000 lbs\n• Strong suspension systems\n\nPopular choices: Ford F-250, RAM 2500, Chevy Silverado 2500HD';
+    } catch (error) {
+      console.error('Error getting AI response:', error);
+      const errorMessage = {
+        role: 'assistant',
+        content: 'Sorry, I encountered an error. Please try again.'
+      };
+      setMessages(prev => [...prev, errorMessage]);
     }
     
-    if (lowerQ.includes('electric') || lowerQ.includes('gasoline')) {
-      return 'Electric vs Gasoline comparison:\n\n**Electric:**\n• Lower running costs\n• Less maintenance\n• Better for environment\n• Limited range\n\n**Gasoline:**\n• Longer range\n• More charging stations\n• Lower upfront cost\n• Higher fuel costs';
-    }
-    
-    if (lowerQ.includes('family') || lowerQ.includes('suv')) {
-      return 'Great family SUVs under $30k:\n• Honda CR-V - Reliable & spacious\n• Toyota RAV4 - Great safety ratings\n• Mazda CX-5 - Fun to drive\n• Hyundai Tucson - Good warranty\n\nAll offer 3rd row seating options!';
-    }
-    
-    return 'That\'s a great question! I recommend:\n1. Check vehicle history report\n2. Inspect for rust and damage\n3. Test drive thoroughly\n4. Get a mechanic inspection\n5. Review maintenance records\n\nWould you like more specific advice?';
+    setIsLoading(false);
   };
 
   const handleQuickQuestion = (question) => {

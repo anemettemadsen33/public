@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import emailService from '../services/email';
 
 // Configuration for test drive locations
 const TEST_DRIVE_LOCATIONS = [
@@ -36,8 +37,18 @@ const TestDriveModal = ({ isOpen, onClose, vehicle }) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Send confirmation email
+      const bookingDetails = {
+        vehicle: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
+        date: formData.date,
+        time: formData.time,
+        location: TEST_DRIVE_LOCATIONS.find(loc => loc.value === formData.location)?.label || formData.location,
+        confirmationCode: generateConfirmationCode(),
+      };
+
+      await emailService.sendTestDriveConfirmation(formData.email, bookingDetails);
+
       setIsSubmitting(false);
       setSubmitSuccess(true);
       setTimeout(() => {
@@ -54,7 +65,15 @@ const TestDriveModal = ({ isOpen, onClose, vehicle }) => {
           notes: ''
         });
       }, 2000);
-    }, 1500);
+    } catch (error) {
+      console.error('Error submitting test drive:', error);
+      setIsSubmitting(false);
+      alert('Failed to book test drive. Please try again.');
+    }
+  };
+
+  const generateConfirmationCode = () => {
+    return Math.random().toString(36).substring(2, 10).toUpperCase();
   };
 
   // Generate time slots

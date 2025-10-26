@@ -11,6 +11,8 @@ import VehicleDetailsPage from './pages/VehicleDetailsPage';
 import ComparePage from './pages/ComparePage';
 import DealersPage from './pages/DealersPage';
 import AdminDashboard from './pages/AdminDashboard';
+import UserProfile from './pages/UserProfile';
+import DealerCRMDashboard from './pages/DealerCRMDashboard';
 import './i18n/i18n';
 
 function App() {
@@ -36,6 +38,8 @@ function App() {
                     <Route path="/compare" element={<ComparePage />} />
                     <Route path="/dealers" element={<DealersPage />} />
                     <Route path="/admin" element={<AdminDashboard />} />
+                    <Route path="/profile" element={<UserProfile />} />
+                    <Route path="/dealer/crm" element={<DealerCRMDashboard />} />
                   </Routes>
                 </MainLayout>
               </Router>
