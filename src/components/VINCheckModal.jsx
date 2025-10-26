@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import vinCheckService from '../services/vinCheck';
+import ocrService from '../services/ocrService';
 
 const VINCheckModal = ({ isOpen, onClose, vehicle }) => {
   const { t } = useTranslation();
@@ -8,6 +9,9 @@ const VINCheckModal = ({ isOpen, onClose, vehicle }) => {
   const [isChecking, setIsChecking] = useState(false);
   const [checkResult, setCheckResult] = useState(null);
   const [_error, setError] = useState(null);
+  const [isScanning, setIsScanning] = useState(false);
+  const [scanProgress, setScanProgress] = useState(0);
+  const fileInputRef = useRef(null);
 
   if (!isOpen) return null;
 
@@ -31,6 +35,41 @@ const VINCheckModal = ({ isOpen, onClose, vehicle }) => {
   const handleReset = () => {
     setVin('');
     setCheckResult(null);
+  };
+
+  const handleFileUpload = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    setIsScanning(true);
+    setError(null);
+    setScanProgress(0);
+
+    try {
+      // Extract VIN from document using OCR
+      const extracted = await ocrService.extractVINFromDocument(file, (progress) => {
+        setScanProgress(progress);
+      });
+
+      // Set VIN in form
+      setVin(extracted.vin);
+      setScanProgress(100);
+
+      // Show success message briefly
+      setTimeout(() => {
+        setIsScanning(false);
+        setScanProgress(0);
+      }, 1000);
+    } catch (err) {
+      setError(err.message || 'Failed to scan document. Please try manual entry.');
+      console.error('OCR Error:', err);
+      setIsScanning(false);
+      setScanProgress(0);
+    }
+  };
+
+  const triggerFileUpload = () => {
+    fileInputRef.current?.click();
   };
 
   return (
@@ -77,6 +116,46 @@ const VINCheckModal = ({ isOpen, onClose, vehicle }) => {
               {/* VIN Input */}
               <div>
                 <label className="label">{t('details.enterVin')} *</label>
+                
+                {/* OCR Scanner Button */}
+                <div className="mb-3">
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileUpload}
+                    className="hidden"
+                  />
+                  <button
+                    type="button"
+                    onClick={triggerFileUpload}
+                    disabled={isScanning}
+                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    {isScanning ? (
+                      <span>Scanning document... {scanProgress}%</span>
+                    ) : (
+                      <span>📸 Scan Registration Document (OCR)</span>
+                    )}
+                  </button>
+                  {isScanning && (
+                    <div className="mt-2 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                      <div
+                        className="bg-gradient-to-r from-purple-600 to-blue-600 h-2 rounded-full transition-all duration-300"
+                        style={{ width: `${scanProgress}%` }}
+                      ></div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="text-center text-sm text-gray-500 dark:text-gray-400 mb-3">
+                  or enter manually
+                </div>
+                
                 <input
                   type="text"
                   value={vin}
