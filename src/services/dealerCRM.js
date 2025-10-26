@@ -179,10 +179,10 @@ class DealerCRMService {
   /**
    * Get lead analytics for dealer
    * @param {string} dealerId - Dealer ID
-   * @param {object} dateRange - Date range for analytics
+   * @param {object} _dateRange - Date range for analytics
    * @returns {Promise<object>} Analytics data
    */
-  async getLeadAnalytics(dealerId, dateRange = {}) {
+  async getLeadAnalytics(dealerId, _dateRange = {}) {
     try {
       // In production:
       // const response = await fetch(`${this.apiUrl}/dealer/${dealerId}/analytics?...`);

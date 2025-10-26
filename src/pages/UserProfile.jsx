@@ -49,12 +49,15 @@ const UserProfile = () => {
 
   useEffect(() => {
     if (user?.id) {
-      setTwoFASetup(prev => ({
-        ...prev,
-        enabled: twoFactorService.is2FAEnabled(user.id),
-      }));
+      const isEnabled = twoFactorService.is2FAEnabled(user.id);
+      if (isEnabled !== twoFASetup.enabled) {
+        setTwoFASetup(prev => ({
+          ...prev,
+          enabled: isEnabled,
+        }));
+      }
     }
-  }, [user]);
+  }, [user, twoFASetup.enabled]);
 
   const handleProfileChange = (e) => {
     const { name, value } = e.target;
@@ -103,8 +106,8 @@ const UserProfile = () => {
         qrCode: result.qrCode,
         backupCodes: result.backupCodes,
       }));
-    } catch (error) {
-      console.error('Error generating 2FA:', error);
+    } catch (_error) {
+      console.error('Error generating 2FA:', _error);
     }
   };
 
@@ -139,7 +142,7 @@ const UserProfile = () => {
       } else {
         alert(result.error || 'Invalid verification code');
       }
-    } catch (error) {
+    } catch (_error) {
       alert('Failed to disable 2FA');
     }
   };

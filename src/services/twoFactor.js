@@ -15,6 +15,7 @@ class TwoFactorService {
   async generateSecret(userId, email) {
     try {
       // In production, this would call your backend API
+      // Backend should use crypto.randomBytes() for secure random generation
       // const response = await fetch(`${this.apiUrl}/auth/2fa/generate`, {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
@@ -22,7 +23,9 @@ class TwoFactorService {
       // });
       // return await response.json();
 
-      // Demo mode: Generate a fake secret
+      // DEMO MODE ONLY: Generate a fake secret
+      // WARNING: Math.random() is NOT cryptographically secure
+      // In production, use: crypto.getRandomValues() or backend crypto.randomBytes()
       const secret = this.generateRandomSecret();
       const appName = 'AutoMarketplace';
       const qrCodeUrl = `otpauth://totp/${appName}:${email}?secret=${secret}&issuer=${appName}`;
@@ -30,7 +33,8 @@ class TwoFactorService {
       // Generate backup codes
       const backupCodes = this.generateBackupCodes();
 
-      // In production, store secret and backup codes in database
+      // SECURITY: In production, NEVER store secrets in sessionStorage
+      // Store encrypted in database on backend
       sessionStorage.setItem(`2fa_secret_${userId}`, secret);
       sessionStorage.setItem(`2fa_backup_${userId}`, JSON.stringify(backupCodes));
 
@@ -170,9 +174,18 @@ class TwoFactorService {
 
   /**
    * Generate random secret for TOTP
+   * DEMO MODE ONLY - NOT CRYPTOGRAPHICALLY SECURE
+   * In production, use crypto.getRandomValues() or backend crypto.randomBytes()
    * @private
    */
   generateRandomSecret() {
+    // SECURITY WARNING: Math.random() is NOT secure for cryptographic use
+    // This is for DEMO purposes only
+    // Production implementation:
+    // const array = new Uint8Array(20);
+    // crypto.getRandomValues(array);
+    // return Array.from(array, byte => byte.toString(32).toUpperCase()).join('').substring(0, 32);
+    
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'; // Base32 charset
     let secret = '';
     for (let i = 0; i < 32; i++) {
@@ -183,9 +196,23 @@ class TwoFactorService {
 
   /**
    * Generate backup codes
+   * DEMO MODE ONLY - NOT CRYPTOGRAPHICALLY SECURE
+   * In production, use crypto.getRandomValues() or backend crypto.randomBytes()
    * @private
    */
   generateBackupCodes() {
+    // SECURITY WARNING: Math.random() is NOT secure for cryptographic use
+    // This is for DEMO purposes only
+    // Production implementation:
+    // const codes = [];
+    // for (let i = 0; i < 10; i++) {
+    //   const array = new Uint8Array(4);
+    //   crypto.getRandomValues(array);
+    //   const code = Array.from(array, byte => byte.toString(10).padStart(2, '0')).join('');
+    //   codes.push(code);
+    // }
+    // return codes;
+    
     const codes = [];
     for (let i = 0; i < 10; i++) {
       let code = '';
