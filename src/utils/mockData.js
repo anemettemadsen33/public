@@ -10,6 +10,8 @@ export const mockVehicles = [
     fuelType: 'Diesel',
     transmission: 'Automatic',
     category: 'cars',
+    mainCategory: 'Car',
+    subCategory: 'Car.SUV',
     power: '265 HP',
     engine: '3.0L Diesel',
     color: 'Black',
@@ -18,13 +20,13 @@ export const mockVehicles = [
     images: [
       'https://via.placeholder.com/800x600/333/fff?text=BMW+X5',
       'https://via.placeholder.com/800x600/444/fff?text=BMW+X5+Interior',
-      'https://via.placeholder.com/800x600/555/fff?text=BMW+X5+Side'
+      'https://via.placeholder.com/800x600/555/fff?text=BMW+X5+Side',
     ],
     dealerId: 1,
     dealerName: 'Premium Auto',
     location: 'Bucharest',
     createdAt: '2024-01-15',
-    featured: true
+    featured: true,
   },
   {
     id: 2,
@@ -36,6 +38,8 @@ export const mockVehicles = [
     fuelType: 'Diesel',
     transmission: 'Manual',
     category: 'vans',
+    mainCategory: 'Van',
+    subCategory: 'Van.PanelVan',
     power: '150 HP',
     engine: '2.2L Diesel',
     color: 'White',
@@ -43,13 +47,13 @@ export const mockVehicles = [
     features: ['Cruise control', 'Air conditioning', 'Cargo space'],
     images: [
       'https://via.placeholder.com/800x600/333/fff?text=Mercedes+Sprinter',
-      'https://via.placeholder.com/800x600/444/fff?text=Sprinter+Cargo'
+      'https://via.placeholder.com/800x600/444/fff?text=Sprinter+Cargo',
     ],
     dealerId: 2,
     dealerName: 'Van Center',
     location: 'Cluj-Napoca',
     createdAt: '2024-01-20',
-    featured: false
+    featured: false,
   },
   {
     id: 3,
@@ -61,6 +65,8 @@ export const mockVehicles = [
     fuelType: 'Electric',
     transmission: 'Automatic',
     category: 'electric',
+    mainCategory: 'Car',
+    subCategory: 'Car.Limousine',
     power: '283 HP',
     engine: 'Electric',
     color: 'Blue',
@@ -68,13 +74,13 @@ export const mockVehicles = [
     features: ['Autopilot', 'Premium audio', 'Glass roof', 'Supercharging'],
     images: [
       'https://via.placeholder.com/800x600/333/fff?text=Tesla+Model+3',
-      'https://via.placeholder.com/800x600/444/fff?text=Model+3+Interior'
+      'https://via.placeholder.com/800x600/444/fff?text=Model+3+Interior',
     ],
     dealerId: 1,
     dealerName: 'Premium Auto',
     location: 'Bucharest',
     createdAt: '2024-02-01',
-    featured: true
+    featured: true,
   },
   {
     id: 4,
@@ -86,19 +92,19 @@ export const mockVehicles = [
     fuelType: 'Gasoline',
     transmission: 'Manual',
     category: 'motorcycles',
+    mainCategory: 'Motorcycle',
+    subCategory: 'Motorcycle.Cruiser',
     power: '53 HP',
     engine: '750cc V-Twin',
     color: 'Black',
     description: 'Cruiser motorcycle in great condition',
     features: ['ABS', 'LED lights', 'Digital display'],
-    images: [
-      'https://via.placeholder.com/800x600/333/fff?text=Harley+Street+750'
-    ],
+    images: ['https://via.placeholder.com/800x600/333/fff?text=Harley+Street+750'],
     dealerId: 3,
     dealerName: 'Moto World',
     location: 'Timisoara',
     createdAt: '2024-01-25',
-    featured: false
+    featured: false,
   },
   {
     id: 5,
@@ -110,19 +116,19 @@ export const mockVehicles = [
     fuelType: 'Diesel',
     transmission: 'Manual',
     category: 'vans',
+    mainCategory: 'Van',
+    subCategory: 'Van.Transporter',
     power: '140 HP',
     engine: '2.0L Diesel',
     color: 'Silver',
     description: 'Reliable work van',
     features: ['Bluetooth', 'Cruise control', 'Multiple seats'],
-    images: [
-      'https://via.placeholder.com/800x600/333/fff?text=VW+Transporter'
-    ],
+    images: ['https://via.placeholder.com/800x600/333/fff?text=VW+Transporter'],
     dealerId: 2,
     dealerName: 'Van Center',
     location: 'Cluj-Napoca',
     createdAt: '2024-01-18',
-    featured: false
+    featured: false,
   },
   {
     id: 6,
@@ -134,6 +140,8 @@ export const mockVehicles = [
     fuelType: 'Gasoline',
     transmission: 'Automatic',
     category: 'cars',
+    mainCategory: 'Car',
+    subCategory: 'Car.Limousine',
     power: '190 HP',
     engine: '2.0L TFSI',
     color: 'Gray',
@@ -141,15 +149,15 @@ export const mockVehicles = [
     features: ['Virtual cockpit', 'Matrix LED', 'Quattro AWD', 'Heated seats'],
     images: [
       'https://via.placeholder.com/800x600/333/fff?text=Audi+A4',
-      'https://via.placeholder.com/800x600/444/fff?text=A4+Interior'
+      'https://via.placeholder.com/800x600/444/fff?text=A4+Interior',
     ],
     dealerId: 1,
     dealerName: 'Premium Auto',
     location: 'Bucharest',
     createdAt: '2024-02-05',
-    featured: true
-  }
-];
+    featured: true,
+  },
+]
 
 export const mockDealers = [
   {
@@ -163,7 +171,7 @@ export const mockDealers = [
     phone: '+40 21 123 4567',
     email: 'contact@premiumauto.ro',
     openingHours: 'Mon-Fri: 9:00-18:00, Sat: 10:00-16:00',
-    vehiclesCount: 45
+    vehiclesCount: 45,
   },
   {
     id: 2,
@@ -176,7 +184,7 @@ export const mockDealers = [
     phone: '+40 264 123 456',
     email: 'info@vancenter.ro',
     openingHours: 'Mon-Fri: 8:00-17:00, Sat: 9:00-14:00',
-    vehiclesCount: 32
+    vehiclesCount: 32,
   },
   {
     id: 3,
@@ -189,9 +197,9 @@ export const mockDealers = [
     phone: '+40 256 123 456',
     email: 'support@motoworld.ro',
     openingHours: 'Mon-Sat: 10:00-19:00',
-    vehiclesCount: 78
-  }
-];
+    vehiclesCount: 78,
+  },
+]
 
 export const vehicleCategories = [
   { id: 'cars', name: 'Cars', icon: '🚗', path: '/cars' },
@@ -201,19 +209,19 @@ export const vehicleCategories = [
   { id: 'motorcycles', name: 'Motorcycles', icon: '🏍️', path: '/motorcycles' },
   { id: 'electric', name: 'Electric', icon: '⚡', path: '/electric' },
   { id: 'construction', name: 'Construction', icon: '🚜', path: '/construction' },
-  { id: 'agricultural', name: 'Agricultural', icon: '🚜', path: '/agricultural' }
-];
+  { id: 'agricultural', name: 'Agricultural', icon: '🚜', path: '/agricultural' },
+]
 
 export const fuelTypes = [
   { value: 'Gasoline', label: 'Gasoline' },
   { value: 'Diesel', label: 'Diesel' },
   { value: 'Electric', label: 'Electric' },
   { value: 'Hybrid', label: 'Hybrid' },
-  { value: 'LPG', label: 'LPG' }
-];
+  { value: 'LPG', label: 'LPG' },
+]
 
 export const transmissionTypes = [
   { value: 'Manual', label: 'Manual' },
   { value: 'Automatic', label: 'Automatic' },
-  { value: 'Semi-Automatic', label: 'Semi-Automatic' }
-];
+  { value: 'Semi-Automatic', label: 'Semi-Automatic' },
+]
