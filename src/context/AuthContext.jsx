@@ -38,6 +38,16 @@ export const AuthProvider = ({ children }) => {
     setIsDealer(userData.role === 'dealer');
   };
 
+  const loginWithSocial = (provider, userData) => {
+    const userWithProvider = {
+      ...userData,
+      provider,
+      loginMethod: 'social',
+    };
+    setUser(userWithProvider);
+    setIsDealer(userData.role === 'dealer');
+  };
+
   const logout = () => {
     setUser(null);
     setIsDealer(false);
@@ -48,6 +58,7 @@ export const AuthProvider = ({ children }) => {
       user,
       isDealer,
       login,
+      loginWithSocial,
       logout,
       isAuthenticated: !!user
     }}>
