@@ -64,8 +64,14 @@ const VideoListings = ({ vehicleId, dealerId, onVideoUploaded }) => {
       //   }
       // });
       
-      // Create local URL for preview
+      // Create local URL for preview (blob URL is safe)
       const url = URL.createObjectURL(file);
+      
+      // Verify it's a valid blob URL
+      if (!url.startsWith('blob:')) {
+        throw new Error('Invalid video URL generated');
+      }
+      
       setVideoUrl(url);
 
       if (onVideoUploaded) {
