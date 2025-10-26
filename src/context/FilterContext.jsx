@@ -1,14 +1,14 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react'
 
-const FilterContext = createContext();
+const FilterContext = createContext()
 
 export const useFilters = () => {
-  const context = useContext(FilterContext);
+  const context = useContext(FilterContext)
   if (!context) {
-    throw new Error('useFilters must be used within FilterProvider');
+    throw new Error('useFilters must be used within FilterProvider')
   }
-  return context;
-};
+  return context
+}
 
 export const FilterProvider = ({ children }) => {
   const [filters, setFilters] = useState({
@@ -21,18 +21,20 @@ export const FilterProvider = ({ children }) => {
     transmission: '',
     make: '',
     model: '',
-    searchQuery: ''
-  });
+    searchQuery: '',
+    mainCategory: '',
+    subCategory: '',
+  })
 
-  const [sortBy, setSortBy] = useState('newest');
+  const [sortBy, setSortBy] = useState('newest')
 
   const updateFilter = (key, value) => {
-    setFilters(prev => ({ ...prev, [key]: value }));
-  };
+    setFilters(prev => ({ ...prev, [key]: value }))
+  }
 
-  const updateFilters = (newFilters) => {
-    setFilters(prev => ({ ...prev, ...newFilters }));
-  };
+  const updateFilters = newFilters => {
+    setFilters(prev => ({ ...prev, ...newFilters }))
+  }
 
   const resetFilters = () => {
     setFilters({
@@ -45,20 +47,33 @@ export const FilterProvider = ({ children }) => {
       transmission: '',
       make: '',
       model: '',
-      searchQuery: ''
-    });
-  };
+      searchQuery: '',
+      mainCategory: '',
+      subCategory: '',
+    })
+  }
+
+  const setMainCategory = mainCategory => {
+    setFilters(prev => ({
+      ...prev,
+      mainCategory,
+      subCategory: '', // Reset subcategory when main category changes
+    }))
+  }
 
   return (
-    <FilterContext.Provider value={{
-      filters,
-      sortBy,
-      updateFilter,
-      updateFilters,
-      resetFilters,
-      setSortBy
-    }}>
+    <FilterContext.Provider
+      value={{
+        filters,
+        sortBy,
+        updateFilter,
+        updateFilters,
+        resetFilters,
+        setMainCategory,
+        setSortBy,
+      }}
+    >
       {children}
     </FilterContext.Provider>
-  );
-};
+  )
+}

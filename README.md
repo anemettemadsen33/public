@@ -5,6 +5,7 @@ A modern, enterprise-level auto marketplace platform built with React + Tailwind
 ## ✨ Features
 
 ### 🔥 UX & Frontend
+
 - ✅ **Dark Mode + Theme Switcher**: Auto-detect system theme with persistent localStorage toggle
 - ✅ **Real-Time Search + Filters**: 300ms debounce with instant visual feedback
 - ✅ **Image Blur-Up Loading**: Placeholder blur effect for better perceived performance
@@ -13,29 +14,39 @@ A modern, enterprise-level auto marketplace platform built with React + Tailwind
 - ✅ **Responsive Design**: Mobile-first, fully responsive UI
 
 ### 💾 State & Data Management
+
 - ✅ **Zustand State Management**: Lightweight, performant state for filters, comparisons, preferences
 - ✅ **TanStack Query (React Query)**: Intelligent caching, auto-refetch, background updates
 - ✅ **LocalStorage Persistence**: Automatic persistence for user preferences
 
 ### 🛠️ Feature Enhancements
+
 - ✅ **Progressive Web App (PWA)**: Installable, offline support, service worker
 - ✅ **Smart Recommendation Engine**: ML-based recommendations from user behavior
 - ✅ **AI Chatbot**: Simulated GPT responses with quick questions and contextual help
 - ✅ **Favorites/Save System**: Save vehicles to favorites with heart icon
 - ✅ **Sponsored Listings**: Yellow "Sponsored" badges for dealer promotions
+- ✅ **Vehicle Subcategories**: Mobile.de-compliant category codes with dependent dropdowns
+  - 6 main categories (Car, Motorcycle, Van, Truck, ConstructionMachine, Agricultural)
+  - 62 subcategories with official codes (e.g., Car.Cabrio, Motorcycle.Touring)
+  - Cascade filtering with automatic reset
+  - Full TypeScript support with Zod validation
 
 ### 🧑‍💼 Admin & Dealer Tools
+
 - ✅ **Admin Dashboard**: Interactive charts (sales, leads, categories) with recharts
 - ✅ **Analytics Tracking**: Views, clicks, saves tracked in Zustand store
 - ✅ **Dealer Listings Management**: Table view with status filters
 
 ### 🌍 Internationalization
+
 - ✅ **5 Languages**: English, Romanian, German, Arabic, Hebrew
 - ✅ **Auto Language Detection**: Detect from browser settings
 - ✅ **RTL Support**: Full right-to-left layout for Arabic & Hebrew
 - ✅ **Localized Formatting**: Dates, currencies, numbers
 
 ### 📈 SEO & Performance
+
 - ✅ **Sitemap.xml**: Complete sitemap for all routes
 - ✅ **Robots.txt**: SEO-friendly robots file
 - ✅ **JSON-LD Structured Data**: Schema.org markup helpers
@@ -59,6 +70,7 @@ A modern, enterprise-level auto marketplace platform built with React + Tailwind
 ## 📊 Performance
 
 ### Build Output
+
 ```
 dist/assets/manifest-q2dGo75m.json    0.91 kB
 dist/index.html                       2.14 kB
@@ -72,6 +84,7 @@ dist/assets/index-*.js               ~450 kB (Main bundle)
 ```
 
 ### Optimizations
+
 - Code splitting by feature (vendor, i18n, charts, animations, state)
 - Tree shaking with ES modules
 - CSS purging with Tailwind
@@ -111,7 +124,8 @@ src/
 │   ├── CompareContext.jsx
 │   └── ThemeContext.jsx (Dark mode)
 ├── hooks/            # Custom React hooks
-│   └── useRecommendations.js (ML-based recommendations)
+│   ├── useRecommendations.js (ML-based recommendations)
+│   └── useVehicleSubCategories.ts (Category filtering)
 ├── i18n/             # Internationalization
 │   ├── i18n.js (Auto-detection, RTL)
 │   └── locales/ (en, ro, de, ar, he)
@@ -128,6 +142,8 @@ src/
 ├── utils/            # Helper functions
 │   ├── helpers.js
 │   ├── mockData.js
+│   ├── vehicleSubCategories.ts (Category definitions)
+│   ├── validationSchema.ts (Zod schemas)
 │   ├── languageDetection.js (Auto-detect, RTL)
 │   └── structuredData.js (SEO JSON-LD)
 ├── App.jsx
@@ -144,17 +160,20 @@ src/
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd public
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -197,12 +216,14 @@ Language is auto-detected from browser settings, or users can manually switch vi
 ## 🤖 AI Chatbot
 
 The AI assistant helps users with:
+
 - Vehicle recommendations
 - Comparison guidance
 - Buying advice
 - Quick answers to common questions
 
 **Quick Questions:**
+
 - "What truck is best for heavy transport?"
 - "Compare electric vs gasoline cars"
 - "Best family SUV under $30,000"
@@ -213,6 +234,7 @@ The AI assistant helps users with:
 Access at `/admin` (demo only, no auth):
 
 **Features:**
+
 - Sales & leads line chart
 - Category distribution pie chart
 - Recent listings table
@@ -222,6 +244,7 @@ Access at `/admin` (demo only, no auth):
 ## 🎯 Smart Recommendations
 
 The recommendation engine uses:
+
 - Viewed vehicles history
 - Clicked filter preferences
 - Saved favorites
@@ -229,9 +252,46 @@ The recommendation engine uses:
 - Price range similarity
 
 Recommendations appear on:
+
 - Homepage
 - Vehicle detail pages
 - After adding to comparison
+
+## 🚗 Vehicle Categories & Subcategories
+
+The application implements a comprehensive hierarchical categorization system based on **mobile.de official category codes**.
+
+### Main Categories
+
+- **Car** - Passenger cars (Autos)
+- **Motorcycle** - Two-wheeled vehicles (Motorräder)
+- **Van** - Light commercial vehicles up to 7.5t (Transporter)
+- **Truck** - Heavy commercial vehicles over 7.5t (LKW)
+- **ConstructionMachine** - Construction equipment (Baumaschinen)
+- **Agricultural** - Farming machinery (Landmaschinen)
+
+### Features
+
+- **62 Subcategories**: Official mobile.de codes (e.g., `Car.Cabrio`, `Motorcycle.Touring`, `ConstructionMachine.MiniExcavator`)
+- **Dependent Dropdowns**: Subcategory options filtered by selected main category
+- **Cascade Reset**: Changing main category automatically clears subcategory
+- **TypeScript Support**: Full type safety with enums and interfaces
+- **Zod Validation**: Runtime validation ensuring subcategory belongs to main category
+- **LocalStorage Persistence**: Category preferences saved across sessions
+- **Bilingual Labels**: English and German (Deutsch) labels for all categories
+
+### Usage Example
+
+```typescript
+import { useVehicleSubCategories } from '@/hooks/useVehicleSubCategories'
+
+function FilterComponent() {
+  const { mainCategories, subCategories } = useVehicleSubCategories('Car')
+  // subCategories contains all Car.* subcategories
+}
+```
+
+📖 **Full Documentation**: See [docs/vehicleCategories.md](docs/vehicleCategories.md) for complete reference tables and code examples.
 
 ## 🔐 Security & Privacy
 
@@ -244,6 +304,7 @@ Recommendations appear on:
 ## 📊 Analytics Tracking
 
 The app tracks (locally, no backend yet):
+
 - Vehicle views
 - Filter usage
 - Saved favorites
@@ -255,6 +316,7 @@ This data powers the smart recommendation engine.
 ## 🎨 Dark Mode
 
 **Features:**
+
 - Auto-detect system preference
 - Manual toggle in navbar
 - Smooth transitions
@@ -262,6 +324,7 @@ This data powers the smart recommendation engine.
 - All components dark-mode aware
 
 **Implementation:**
+
 - Tailwind's dark mode (class strategy)
 - ThemeContext for state
 - CSS transitions for smooth switching
@@ -269,10 +332,12 @@ This data powers the smart recommendation engine.
 ## 🌍 RTL Support
 
 **Supported Languages:**
+
 - Arabic (ar)
 - Hebrew (he)
 
 **Features:**
+
 - Auto-detect RTL languages
 - Flip layout direction
 - Mirror spacing utilities
@@ -282,6 +347,7 @@ This data powers the smart recommendation engine.
 ## 🚧 Future Enhancements
 
 Planned features (not yet implemented):
+
 - [ ] User authentication (OAuth, Magic Link, 2FA)
 - [ ] Advanced user profiles
 - [ ] Real AI integration (OpenAI GPT)
