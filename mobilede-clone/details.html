@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detalii mașină">
+    <title>Detalii Mașină - AutoMarket</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">🚗 AutoMarket</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="results.html">Căutare</a></li>
+                <li><a href="post.html">Adaugă Anunț</a></li>
+                <li><a href="#" id="authLink">Autentificare</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Vehicle Detail -->
+    <section class="container">
+        <!-- Loading State -->
+        <div id="loadingState" class="loading d-none">
+            <div class="spinner"></div>
+            <p>Se încarcă detaliile...</p>
+        </div>
+
+        <!-- Vehicle Content -->
+        <div id="vehicleContent" class="vehicle-detail d-none">
+            <a href="results.html" style="display: inline-block; margin-bottom: 1rem; color: #3498db; text-decoration: none;">
+                ← Înapoi la rezultate
+            </a>
+            
+            <div class="detail-grid">
+                <!-- Gallery -->
+                <div class="gallery">
+                    <div class="gallery-main">
+                        <img id="mainImage" src="" alt="Mașină">
+                    </div>
+                    <div class="gallery-thumbs" id="galleryThumbs">
+                        <!-- Thumbnails will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Vehicle Info -->
+                <div class="vehicle-info">
+                    <h1 id="vehicleTitle">Loading...</h1>
+                    <div class="price" id="vehiclePrice">€ 0</div>
+                    
+                    <div class="specs-grid" id="mainSpecs">
+                        <!-- Main specs will be loaded here -->
+                    </div>
+
+                    <button class="btn btn-primary btn-block" id="contactBtn">
+                        📞 Contactează Vânzătorul
+                    </button>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="description" style="margin-top: 2rem;">
+                <h2 style="margin-bottom: 1rem; color: #2c3e50;">Descriere</h2>
+                <p id="vehicleDescription">Loading...</p>
+            </div>
+
+            <!-- Technical Specifications -->
+            <div style="margin-top: 2rem;">
+                <h2 style="margin-bottom: 1rem; color: #2c3e50;">Specificații Tehnice</h2>
+                <div class="specs-grid" id="technicalSpecs">
+                    <!-- Technical specs will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Not Found -->
+        <div id="notFound" class="d-none" style="text-align: center; padding: 3rem;">
+            <h2 style="color: #666;">Mașină negăsită</h2>
+            <p>Anunțul pe care îl cauți nu există sau a fost șters.</p>
+            <a href="index.html" class="btn btn-primary" style="margin-top: 1rem;">Înapoi la pagina principală</a>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Contactează Vânzătorul</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            
+            <div id="contactInfo">
+                <!-- Contact info will be loaded here -->
+            </div>
+
+            <form id="contactForm" style="margin-top: 2rem;">
+                <div class="form-group">
+                    <label for="userName">Numele tău</label>
+                    <input type="text" id="userName" name="userName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="userEmail">Email</label>
+                    <input type="email" id="userEmail" name="userEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="userPhone">Telefon</label>
+                    <input type="tel" id="userPhone" name="userPhone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="userMessage">Mesaj</label>
+                    <textarea id="userMessage" name="userMessage" rows="4" required>Bună ziua, sunt interesat de această mașină. Vă rog să mă contactați.</textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Trimite Mesaj</button>
+            </form>
+
+            <div id="contactSuccess" class="success-message d-none">
+                Mesajul a fost trimis cu succes! Vânzătorul te va contacta în curând.
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AutoMarket</h3>
+                    <p>Cea mai mare platformă auto din România. Găsește mașina perfectă pentru tine.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Link-uri Utile</h3>
+                    <ul>
+                        <li><a href="results.html">Căutare Mașini</a></li>
+                        <li><a href="post.html">Adaugă Anunț</a></li>
+                        <li><a href="#">Despre Noi</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Termeni și Condiții</a></li>
+                        <li><a href="#">Politică de Confidențialitate</a></li>
+                        <li><a href="#">Politică Cookie-uri</a></li>
+                        <li><a href="#">GDPR</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Urmărește-ne</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AutoMarket. Toate drepturile rezervate.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/details.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Găsește mașina perfectă - cel mai mare marketplace auto din România">
+    <title>AutoMarket - Cumpără și vinde mașini</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">🚗 AutoMarket</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="results.html">Căutare</a></li>
+                <li><a href="post.html">Adaugă Anunț</a></li>
+                <li><a href="#" id="authLink">Autentificare</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Găsește Mașina Perfectă</h1>
+            <p>Peste 1000 de mașini second-hand și noi la cele mai bune prețuri</p>
+        </div>
+    </section>
+
+    <!-- Search Form -->
+    <section class="container" style="margin-top: -50px; position: relative; z-index: 10;">
+        <form class="search-form" id="searchForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="marca">Marcă</label>
+                    <select id="marca" name="marca">
+                        <option value="">Toate mărcile</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Mercedes-Benz">Mercedes-Benz</option>
+                        <option value="Audi">Audi</option>
+                        <option value="Volkswagen">Volkswagen</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Ford">Ford</option>
+                        <option value="Skoda">Skoda</option>
+                        <option value="Renault">Renault</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="model">Model</label>
+                    <select id="model" name="model">
+                        <option value="">Toate modelele</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="combustibil">Combustibil</label>
+                    <select id="combustibil" name="combustibil">
+                        <option value="">Toate tipurile</option>
+                        <option value="Benzină">Benzină</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Hybrid">Hybrid</option>
+                        <option value="Electric">Electric</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="transmisie">Transmisie</label>
+                    <select id="transmisie" name="transmisie">
+                        <option value="">Toate tipurile</option>
+                        <option value="Manuală">Manuală</option>
+                        <option value="Automată">Automată</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pretMin">Preț minim (€)</label>
+                    <input type="number" id="pretMin" name="pretMin" placeholder="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="pretMax">Preț maxim (€)</label>
+                    <input type="number" id="pretMax" name="pretMax" placeholder="100000">
+                </div>
+                
+                <div class="form-group">
+                    <label for="anMin">An minim</label>
+                    <input type="number" id="anMin" name="anMin" placeholder="2000">
+                </div>
+                
+                <div class="form-group">
+                    <label for="anMax">An maxim</label>
+                    <input type="number" id="anMax" name="anMax" placeholder="2024">
+                </div>
+                
+                <div class="form-group">
+                    <label for="kmMax">Kilometraj maxim</label>
+                    <input type="number" id="kmMax" name="kmMax" placeholder="200000">
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">🔍 Caută Mașini</button>
+        </form>
+    </section>
+
+    <!-- Carousel -->
+    <section class="container">
+        <div class="carousel">
+            <div class="carousel-inner" id="carouselInner">
+                <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1542362567-b07e54358753?w=800');">
+                    <div class="carousel-caption">
+                        <h2>Oferte Speciale</h2>
+                        <p>Reduceri de până la 20% pentru mașinile selectate</p>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800');">
+                    <div class="carousel-caption">
+                        <h2>Garanție Extinsă</h2>
+                        <p>Toate mașinile verificate și cu garanție</p>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800');">
+                    <div class="carousel-caption">
+                        <h2>Finanțare Disponibilă</h2>
+                        <p>Rate cu avans de la 10%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-control" id="prevBtn">❮</button>
+                <button class="carousel-control" id="nextBtn">❯</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="container" style="margin-top: 3rem;">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">Mașini Recomandate</h2>
+        <div class="cars-grid" id="featuredCars">
+            <!-- Featured cars will be loaded here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AutoMarket</h3>
+                    <p>Cea mai mare platformă auto din România. Găsește mașina perfectă pentru tine.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Link-uri Utile</h3>
+                    <ul>
+                        <li><a href="results.html">Căutare Mașini</a></li>
+                        <li><a href="post.html">Adaugă Anunț</a></li>
+                        <li><a href="#">Despre Noi</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Termeni și Condiții</a></li>
+                        <li><a href="#">Politică de Confidențialitate</a></li>
+                        <li><a href="#">Politică Cookie-uri</a></li>
+                        <li><a href="#">GDPR</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Urmărește-ne</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AutoMarket. Toate drepturile rezervate.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>
