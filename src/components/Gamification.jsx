@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
+import { motion } from 'framer-motion'
 
 // Gamification store using localStorage
 const getGamificationData = () => {
-  const saved = localStorage.getItem('gamification');
+  const saved = localStorage.getItem('gamification')
   if (saved) {
-    return JSON.parse(saved);
+    return JSON.parse(saved)
   }
   return {
     points: 0,
@@ -20,13 +20,14 @@ const getGamificationData = () => {
       searchesPerformed: 0,
       reviewsWritten: 0,
       messagesExchanged: 0,
+      vehiclesListed: 0,
     },
-  };
-};
+  }
+}
 
-const saveGamificationData = (data) => {
-  localStorage.setItem('gamification', JSON.stringify(data));
-};
+const saveGamificationData = data => {
+  localStorage.setItem('gamification', JSON.stringify(data))
+}
 
 // Badge definitions
 const BADGES = [
@@ -35,7 +36,8 @@ const BADGES = [
     name: 'First Glance',
     description: 'View your first vehicle',
     icon: '👀',
-    requirement: (stats) => stats.vehiclesViewed >= 1,
+    color: 'from-blue-400 to-blue-600',
+    requirement: stats => stats.vehiclesViewed >= 1,
     points: 10,
   },
   {
@@ -43,7 +45,8 @@ const BADGES = [
     name: 'Explorer',
     description: 'View 10 vehicles',
     icon: '🔍',
-    requirement: (stats) => stats.vehiclesViewed >= 10,
+    color: 'from-purple-400 to-purple-600',
+    requirement: stats => stats.vehiclesViewed >= 10,
     points: 50,
   },
   {
@@ -51,7 +54,8 @@ const BADGES = [
     name: 'Car Enthusiast',
     description: 'View 50 vehicles',
     icon: '🚗',
-    requirement: (stats) => stats.vehiclesViewed >= 50,
+    color: 'from-green-400 to-green-600',
+    requirement: stats => stats.vehiclesViewed >= 50,
     points: 100,
   },
   {
@@ -59,7 +63,8 @@ const BADGES = [
     name: 'Collector',
     description: 'Save 10 vehicles to favorites',
     icon: '💝',
-    requirement: (stats) => stats.vehiclesSaved >= 10,
+    color: 'from-pink-400 to-pink-600',
+    requirement: stats => stats.vehiclesSaved >= 10,
     points: 75,
   },
   {
@@ -67,7 +72,8 @@ const BADGES = [
     name: 'Comparison Master',
     description: 'Compare 5 different sets of vehicles',
     icon: '⚖️',
-    requirement: (stats) => stats.vehiclesCompared >= 5,
+    color: 'from-yellow-400 to-yellow-600',
+    requirement: stats => stats.vehiclesCompared >= 5,
     points: 60,
   },
   {
@@ -75,7 +81,8 @@ const BADGES = [
     name: 'Search Guru',
     description: 'Perform 20 searches',
     icon: '🔎',
-    requirement: (stats) => stats.searchesPerformed >= 20,
+    color: 'from-cyan-400 to-cyan-600',
+    requirement: stats => stats.searchesPerformed >= 20,
     points: 40,
   },
   {
@@ -83,7 +90,8 @@ const BADGES = [
     name: 'Reviewer',
     description: 'Write 5 reviews',
     icon: '✍️',
-    requirement: (stats) => stats.reviewsWritten >= 5,
+    color: 'from-orange-400 to-orange-600',
+    requirement: stats => stats.reviewsWritten >= 5,
     points: 100,
   },
   {
@@ -91,10 +99,20 @@ const BADGES = [
     name: 'Communicator',
     description: 'Exchange 10 messages with dealers',
     icon: '💬',
-    requirement: (stats) => stats.messagesExchanged >= 10,
+    color: 'from-indigo-400 to-indigo-600',
+    requirement: stats => stats.messagesExchanged >= 10,
     points: 80,
   },
-];
+  {
+    id: 'expert_poster',
+    name: '🌟 Expert Poster',
+    description: 'List 10 vehicles',
+    icon: '⭐',
+    color: 'from-premium-400 to-premium-600',
+    requirement: stats => stats.vehiclesListed >= 10,
+    points: 150,
+  },
+]
 
 // Level thresholds
 const LEVELS = [
@@ -103,121 +121,122 @@ const LEVELS = [
   { level: 3, minPoints: 300, name: 'Expert', icon: '⭐' },
   { level: 4, minPoints: 600, name: 'Master', icon: '🏆' },
   { level: 5, minPoints: 1000, name: 'Legend', icon: '👑' },
-];
+]
 
 const Gamification = ({ userId: _userId }) => {
-  const { t } = useTranslation();
-  const [data, setData] = useState(getGamificationData());
-  const [showNewBadge, setShowNewBadge] = useState(null);
+  const { t } = useTranslation()
+  const [data, setData] = useState(getGamificationData())
+  const [showNewBadge, setShowNewBadge] = useState(null)
 
   // Calculate current level
   const currentLevel = LEVELS.reduce((acc, level) => {
-    return data.points >= level.minPoints ? level : acc;
-  }, LEVELS[0]);
+    return data.points >= level.minPoints ? level : acc
+  }, LEVELS[0])
 
-  const nextLevel = LEVELS.find((l) => l.level === currentLevel.level + 1);
+  const nextLevel = LEVELS.find(l => l.level === currentLevel.level + 1)
   const progressToNext = nextLevel
-    ? ((data.points - currentLevel.minPoints) / (nextLevel.minPoints - currentLevel.minPoints)) * 100
-    : 100;
+    ? ((data.points - currentLevel.minPoints) / (nextLevel.minPoints - currentLevel.minPoints)) *
+      100
+    : 100
 
   // Check for new badges
   useEffect(() => {
-    BADGES.forEach((badge) => {
+    BADGES.forEach(badge => {
       if (!data.badges.includes(badge.id) && badge.requirement(data.stats)) {
         // Award badge
         const newData = {
           ...data,
           badges: [...data.badges, badge.id],
           points: data.points + badge.points,
-        };
-        setData(newData);
-        saveGamificationData(newData);
-        setShowNewBadge(badge);
+        }
+        setData(newData)
+        saveGamificationData(newData)
+        setShowNewBadge(badge)
 
         // Hide badge notification after 5 seconds
-        setTimeout(() => setShowNewBadge(null), 5000);
+        setTimeout(() => setShowNewBadge(null), 5000)
       }
-    });
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data.stats]);
+  }, [data.stats])
 
   // Public methods to track achievements
   useEffect(() => {
     const gamificationAPI = {
       trackVehicleView: () => {
-        setData((prev) => {
+        setData(prev => {
           const newData = {
             ...prev,
             stats: { ...prev.stats, vehiclesViewed: prev.stats.vehiclesViewed + 1 },
             points: prev.points + 5,
-          };
-          saveGamificationData(newData);
-          return newData;
-        });
+          }
+          saveGamificationData(newData)
+          return newData
+        })
       },
       trackVehicleSave: () => {
-        setData((prev) => {
+        setData(prev => {
           const newData = {
             ...prev,
             stats: { ...prev.stats, vehiclesSaved: prev.stats.vehiclesSaved + 1 },
             points: prev.points + 10,
-          };
-          saveGamificationData(newData);
-          return newData;
-        });
+          }
+          saveGamificationData(newData)
+          return newData
+        })
       },
       trackVehicleCompare: () => {
-        setData((prev) => {
+        setData(prev => {
           const newData = {
             ...prev,
             stats: { ...prev.stats, vehiclesCompared: prev.stats.vehiclesCompared + 1 },
             points: prev.points + 15,
-          };
-          saveGamificationData(newData);
-          return newData;
-        });
+          }
+          saveGamificationData(newData)
+          return newData
+        })
       },
       trackSearch: () => {
-        setData((prev) => {
+        setData(prev => {
           const newData = {
             ...prev,
             stats: { ...prev.stats, searchesPerformed: prev.stats.searchesPerformed + 1 },
             points: prev.points + 3,
-          };
-          saveGamificationData(newData);
-          return newData;
-        });
+          }
+          saveGamificationData(newData)
+          return newData
+        })
       },
       trackReview: () => {
-        setData((prev) => {
+        setData(prev => {
           const newData = {
             ...prev,
             stats: { ...prev.stats, reviewsWritten: prev.stats.reviewsWritten + 1 },
             points: prev.points + 20,
-          };
-          saveGamificationData(newData);
-          return newData;
-        });
+          }
+          saveGamificationData(newData)
+          return newData
+        })
       },
       trackMessage: () => {
-        setData((prev) => {
+        setData(prev => {
           const newData = {
             ...prev,
             stats: { ...prev.stats, messagesExchanged: prev.stats.messagesExchanged + 1 },
             points: prev.points + 8,
-          };
-          saveGamificationData(newData);
-          return newData;
-        });
+          }
+          saveGamificationData(newData)
+          return newData
+        })
       },
-    };
+    }
 
-    window.gamification = gamificationAPI;
+    window.gamification = gamificationAPI
 
     return () => {
-      delete window.gamification;
-    };
-  }, []);
+      delete window.gamification
+    }
+  }, [])
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
@@ -231,10 +250,14 @@ const Gamification = ({ userId: _userId }) => {
         >
           <div className="text-center">
             <div className="text-6xl mb-2">{showNewBadge.icon}</div>
-            <h3 className="text-xl font-bold">{t('gamification.newBadge', 'New Badge Unlocked!')}</h3>
+            <h3 className="text-xl font-bold">
+              {t('gamification.newBadge', 'New Badge Unlocked!')}
+            </h3>
             <p className="text-lg font-semibold mt-1">{showNewBadge.name}</p>
             <p className="text-sm mt-1">{showNewBadge.description}</p>
-            <p className="text-xs mt-2">+{showNewBadge.points} {t('gamification.points', 'points')}</p>
+            <p className="text-xs mt-2">
+              +{showNewBadge.points} {t('gamification.points', 'points')}
+            </p>
           </div>
         </motion.div>
       )}
@@ -273,7 +296,8 @@ const Gamification = ({ userId: _userId }) => {
         </div>
         {nextLevel && (
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-            {nextLevel.minPoints - data.points} {t('gamification.pointsToNextLevel', 'points to next level')}
+            {nextLevel.minPoints - data.points}{' '}
+            {t('gamification.pointsToNextLevel', 'points to next level')}
           </p>
         )}
       </div>
@@ -320,36 +344,51 @@ const Gamification = ({ userId: _userId }) => {
           {t('gamification.badges', 'Badges')} ({data.badges.length}/{BADGES.length})
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {BADGES.map((badge) => {
-            const unlocked = data.badges.includes(badge.id);
+          {BADGES.map(badge => {
+            const unlocked = data.badges.includes(badge.id)
             return (
-              <div
+              <motion.div
                 key={badge.id}
-                className={`p-4 rounded-lg border-2 transition-all ${
+                whileHover={{ scale: unlocked ? 1.05 : 1 }}
+                className={`p-4 rounded-xl border-2 transition-all relative overflow-hidden ${
                   unlocked
-                    ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20'
-                    : 'border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 opacity-50'
+                    ? 'border-transparent bg-gradient-to-br shadow-lg'
+                    : 'border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 opacity-50 grayscale'
                 }`}
+                style={
+                  unlocked
+                    ? {
+                        backgroundImage: `linear-gradient(to bottom right, var(--tw-gradient-stops))`,
+                      }
+                    : {}
+                }
               >
-                <div className="text-4xl text-center mb-2">{badge.icon}</div>
-                <div className="text-xs font-semibold text-center text-gray-900 dark:text-white">
-                  {badge.name}
-                </div>
-                <div className="text-xs text-center text-gray-500 dark:text-gray-400 mt-1">
-                  {badge.description}
-                </div>
                 {unlocked && (
-                  <div className="text-xs text-center text-primary-600 dark:text-primary-400 font-semibold mt-1">
-                    +{badge.points} pts
-                  </div>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${badge.color} opacity-10`} />
                 )}
-              </div>
-            );
+                <div className="relative z-10">
+                  <div className="text-4xl text-center mb-2">{badge.icon}</div>
+                  <div className="text-xs font-semibold text-center text-gray-900 dark:text-white">
+                    {badge.name}
+                  </div>
+                  <div className="text-xs text-center text-gray-500 dark:text-gray-400 mt-1">
+                    {badge.description}
+                  </div>
+                  {unlocked && (
+                    <div
+                      className={`text-xs text-center font-bold mt-2 bg-gradient-to-r ${badge.color} bg-clip-text text-transparent`}
+                    >
+                      +{badge.points} pts
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            )
           })}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Gamification;
+export default Gamification
